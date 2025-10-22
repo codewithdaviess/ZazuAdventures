@@ -1,0 +1,27 @@
+/* ✅ Step 1: Import fonts first */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+
+/* ✅ Step 2: Import Tailwind */
+@import "tailwindcss";
+
+/* ✅ Step 3: Add your custom CSS after */
+:root {
+  --font-playfair: "Playfair Display", serif;
+  --font-source-sans: "Source Sans 3", sans-serif;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease forwards;
+}
+
