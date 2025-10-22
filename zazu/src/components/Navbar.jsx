@@ -46,7 +46,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Buttons + Mobile Icon */}
+        {/* Desktop Buttons + Mobile Menu Icon */}
         <div className="flex items-center space-x-3">
           {/* Desktop Buttons */}
           <div className="hidden md:flex space-x-2">
@@ -60,19 +60,19 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-white z-[60]" // keep on top of menu
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Panel */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-[#243643] z-40 transform transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 right-0 h-full w-3/4 sm:w-1/2 bg-[#243643] z-50 transform transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex flex-col justify-center items-start h-full p-8 space-y-6 text-lg font-medium">
@@ -91,16 +91,24 @@ export default function Navbar() {
             </NavLink>
           ))}
 
-          <div className="flex flex-col space-y-3 mt-6">
-            <button className="border border-white px-4 py-2 rounded-md hover:bg-white hover:text-[#243643] transition">
+          <div className="flex flex-col space-y-3 mt-6 w-full">
+            <button className="border border-white w-full px-4 py-2 rounded-md hover:bg-white hover:text-[#243643] transition">
               Login
             </button>
-            <button className="bg-[#9aa04f] px-4 py-2 rounded-md hover:bg-[#7f853f] transition">
+            <button className="bg-[#9aa04f] w-full px-4 py-2 rounded-md hover:bg-[#7f853f] transition">
               Book Now
             </button>
           </div>
         </div>
       </div>
+
+      {/* Background Overlay */}
+      {isOpen && (
+        <div
+          onClick={toggleMenu}
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+        ></div>
+      )}
     </nav>
   );
 }
