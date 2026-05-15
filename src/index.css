@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  /* Text Colors */
+  --text-primary: #333333;
+
+  /* Button Colors */
+  --primary-button: #829442;
+}
+
+/* Hero scroll indicator (subtle) */
+.icon-scroll-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon-scroll {
+  position: relative;
+  display: block;
+  width: 26px;
+  height: 44px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+.icon-scroll::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  animation: hero-scroll-indicator 1.6s infinite;
+}
+
+@keyframes hero-scroll-indicator {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
