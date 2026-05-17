@@ -82,128 +82,170 @@ function Counter({ label, value, onChange, min = 0 }) {
 }
 
 function Gallery({ images }) {
-  const [isOpen, setIsOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
 
   if (!images?.length) return null;
 
-  function openAt(nextIndex) {
-    setIndex(nextIndex);
-    setIsOpen(true);
+  const MAX_PREVIEW = 10;
+  const previewImages = images.slice(0, MAX_PREVIEW);
+  const hasMore = images.length > MAX_PREVIEW;
+
+  const isFirst = index === 0;
+  const isLast = index === images.length - 1;
+
+  function openModal(startIndex = 0) {
+    setIndex(startIndex);
+    setOpen(true);
   }
 
-  function close() {
-    setIsOpen(false);
+  function closeModal() {
+    setOpen(false);
   }
 
-  function previous() {
-    setIndex((current) => (current - 1 + images.length) % images.length);
+  function prev() {
+    if (!isFirst) setIndex((i) => i - 1);
   }
 
   function next() {
-    setIndex((current) => (current + 1) % images.length);
+    if (!isLast) setIndex((i) => i + 1);
   }
-
-  const primary = images[0];
 
   return (
     <div className="mt-2">
-      <button
-        type="button"
-        onClick={() => openAt(0)}
-        className="mt-4 block w-full overflow-hidden rounded-sm border border-gray-300 bg-white"
-        aria-label="Open gallery"
-      >
+      {/* MAIN IMAGE */}
+      <div className="relative mt-4 w-full overflow-hidden rounded-sm border border-gray-300 bg-white">
         <img
-          src={primary}
-          alt="Gallery preview"
+          src={images[index]}
+          alt={`Gallery ${index + 1}`}
           className="h-80 w-full object-cover"
-          loading="lazy"
         />
 
-        <div className="flex items-center justify-between gap-4">
-          <button
-            type="button"
-            onClick={() => openAt(0)}
-            className="flex items-center gap-2 text-xs text-[#223441] hover:underline"
-          >
-            <Layers size={14} />
-            <span>View {images.length} photos</span>
-          </button>
-        </div>
-      </button>
-
-      {isOpen ? (
-        <div
-          className="fixed inset-0 z-50 bg-black/70 p-4"
-          role="dialog"
-          aria-modal="true"
-          onClick={close}
+        {/* LEFT */}
+        <button
+          onClick={prev}
+          disabled={isFirst}
+          className={`absolute left-3 top-1/2 -translate-y-1/2 rounded-full p-3 transition
+    ${
+      isFirst
+        ? "bg-black/40 text-white/40 cursor-not-allowed"
+        : "bg-black/40 text-white hover:bg-black/70"
+    }`}
         >
+          <ChevronLeft />
+        </button>
+
+        <button
+          onClick={next}
+          disabled={isLast}
+          className={`absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-3 transition
+    ${
+      isLast
+        ? "bg-black/40 text-white/40 cursor-not-allowed"
+        : "bg-black/40 text-white hover:bg-black/70"
+    }`}
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+
+      {/* THUMBNAILS */}
+      <div className="mt-3 grid grid-cols-3 sm:grid-cols-6 gap-2 w-full">
+        {Array.from({ length: 6 }).map((_, i) => {
+          const isMobile =
+            typeof window !== "undefined" && window.innerWidth < 640;
+
+          const limit = isMobile ? 3 : 6;
+          const isHiddenOnMobile = i >= limit;
+
+          const src = previewImages[i];
+          const isLastSlot = i === limit - 1;
+
+          if (isHiddenOnMobile) return null;
+
+          return (
+            <button
+              key={i}
+              onClick={() => {
+                if (isLastSlot) {
+                  openModal(0);
+                } else {
+                  openModal(i);
+                }
+              }}
+              className={`relative h-16 w-full overflow-hidden rounded-sm border ${
+                i === index ? "border-[#223441]" : "border-gray-300"
+              }`}
+            >
+              {/* IMAGE */}
+              {src && (
+                <img src={src} alt="" className="h-full w-full object-cover" />
+              )}
+
+              {/* VIEW ALL */}
+              {isLastSlot && (
+                <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/60 text-white text-xs font-semibold">
+                  View All
+                </div>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* MODAL */}
+      {open && (
+        <div className="fixed inset-0 z-50 bg-black p-4" onClick={closeModal}>
           <div
-            className="mx-auto flex h-full w-full max-w-6xl flex-col"
+            className="mx-auto flex h-full max-w-6xl flex-col"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* HEADER */}
             <div className="flex items-center justify-between py-3 text-white">
-              <div className="text-sm">
+              <div>
                 Photo {index + 1} of {images.length}
               </div>
-              <button
-                type="button"
-                onClick={close}
-                className="text-sm font-medium hover:underline"
-              >
-                Close
-              </button>
+              <button onClick={closeModal}>Close</button>
             </div>
 
-            <div className="relative flex-1 overflow-hidden rounded-sm bg-black">
+            {/* IMAGE */}
+            <div className="relative flex-1 flex items-center justify-center">
               <img
                 src={images[index]}
-                alt="Gallery"
-                className="h-full w-full object-contain"
+                className="max-h-full max-w-full object-contain"
               />
 
+              {/* ARROWS */}
+              {/* LEFT */}
               <button
-                type="button"
-                onClick={previous}
-                aria-label="Previous photo"
-                className="absolute left-3 top-1/2 -translate-y-1/2 rounded-sm bg-white/90 p-2 text-[#223441] hover:bg-white"
+                onClick={prev}
+                disabled={isFirst}
+                className={`absolute left-3 top-1/2 -translate-y-1/2 rounded-full p-3 transition
+    ${
+      isFirst
+        ? "bg-black/40 text-white/40 cursor-not-allowed"
+        : "bg-black/40 text-white hover:bg-black/70"
+    }`}
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft />
               </button>
+
               <button
-                type="button"
                 onClick={next}
-                aria-label="Next photo"
-                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm bg-white/90 p-2 text-[#223441] hover:bg-white"
+                disabled={isLast}
+                className={`absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-3 transition
+    ${
+      isLast
+        ? "bg-black/40 text-white/40 cursor-not-allowed"
+        : "bg-black/40 text-white hover:bg-black/70"
+    }`}
               >
                 <ChevronRight size={20} />
               </button>
             </div>
-
-            <div className="mt-3 flex gap-3 overflow-x-auto pb-2">
-              {images.map((src, i) => (
-                <button
-                  key={src}
-                  type="button"
-                  onClick={() => setIndex(i)}
-                  className={`h-16 w-24 shrink-0 overflow-hidden rounded-sm border ${
-                    i === index ? "border-white" : "border-white/30"
-                  }`}
-                  aria-label={`Go to photo ${i + 1}`}
-                >
-                  <img
-                    src={src}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
           </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }
@@ -543,17 +585,11 @@ function ProductDetails() {
   const [form, setForm] = useState({
     startDate: today,
     endDate: today,
-
     adults: 2,
     children: 0,
     infants: 0,
-
     fullName: "",
     email: "",
-    phone: "",
-
-    pickup: "",
-    notes: "",
   });
 
   function updateField(name, value) {
@@ -621,7 +657,7 @@ function ProductDetails() {
   return (
     <Layout>
       <div className="mx-auto max-w-6xl px-6 py-3">
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-[3fr_1.2fr]">
           <div>
             <Gallery images={galleryImages} />
 
@@ -695,41 +731,6 @@ function ProductDetails() {
                 onChangePlan={setPlan}
               />
             ) : null}
-
-            {product.policies ? (
-              <div className="mt-10 rounded-sm border border-gray-300 bg-white p-6">
-                <div className="flex items-center gap-2">
-                  <Info size={18} className="text-[#223441]" />
-                  <h2 className="text-md font-semibold">Policies</h2>
-                </div>
-                <div className="mt-4 space-y-2 text-sm text-gray-700">
-                  {product.policies.cancellation ? (
-                    <p>
-                      <span className="font-semibold text-gray-900">
-                        Cancellation:
-                      </span>{" "}
-                      {product.policies.cancellation}
-                    </p>
-                  ) : null}
-                  {product.policies.payment ? (
-                    <p>
-                      <span className="font-semibold text-gray-900">
-                        Payment:
-                      </span>{" "}
-                      {product.policies.payment}
-                    </p>
-                  ) : null}
-                  {product.policies.whatToBring ? (
-                    <p>
-                      <span className="font-semibold text-gray-900">
-                        What to bring:
-                      </span>{" "}
-                      {product.policies.whatToBring}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            ) : null}
           </div>
 
           <aside className="h-fit rounded-sm border border-gray-300 bg-white p-6 lg:sticky lg:top-32">
@@ -762,37 +763,31 @@ function ProductDetails() {
                   customer: {
                     fullName: form.fullName,
                     email: form.email,
-                    phone: form.phone,
                   },
-
-                  pickup: form.pickup,
-                  notes: form.notes,
-
                   paymentStatus: "WHATSAPP_PENDING",
                 };
 
                 saveLastBooking(booking);
 
                 const text = [
-                  `Hi ${company.name}, I'd like to book: ${product.title}`,
+                  `🆕 New Booking Request`,
+                  `------------------------`,
+                  `Product: ${product.title}`,
 
                   form.startDate && form.endDate
-                    ? `Travel Dates: ${form.startDate} to ${form.endDate}`
+                    ? `Dates: ${form.startDate} → ${form.endDate}`
                     : null,
 
-                  form.adults > 0 ? `Adults: ${form.adults}` : null,
-                  form.children > 0 ? `Children: ${form.children}` : null,
-                  form.infants > 0 ? `Infants: ${form.infants}` : null,
+                  `Passengers:`,
+                  form.adults ? `- Adults: ${form.adults}` : null,
+                  form.children ? `- Children: ${form.children}` : null,
+                  form.infants ? `- Infants: ${form.infants}` : null,
 
-                  form.pickup ? `Pickup: ${form.pickup}` : null,
-
+                  `------------------------`,
                   form.fullName ? `Name: ${form.fullName}` : null,
                   form.email ? `Email: ${form.email}` : null,
-                  form.phone ? `Phone/WhatsApp: ${form.phone}` : null,
 
                   total > 0 ? `Estimated Total: $${total}` : null,
-
-                  form.notes ? `Notes: ${form.notes}` : null,
                 ]
                   .filter(Boolean)
                   .join("\n");
@@ -800,166 +795,112 @@ function ProductDetails() {
                 const whatsappLink = `${company.contact.whatsappLink}?text=${encodeURIComponent(text)}`;
 
                 window.open(whatsappLink, "_blank");
+
+                window.open(whatsappLink, "_blank");
               }}
               className="mt-4"
             >
-              <div className="space-y-4 rounded-sm">
-                <DateRange
-                  onChange={(item) => {
-                    setDateRange([item.selection]);
-
-                    setForm((current) => ({
-                      ...current,
-                      startDate: item.selection.startDate
-                        .toISOString()
-                        .split("T")[0],
-
-                      endDate: item.selection.endDate
-                        .toISOString()
-                        .split("T")[0],
-                    }));
-                  }}
-                  moveRangeOnFirstSelection={false}
-                  ranges={dateRange}
-                  minDate={new Date()}
-                  rangeColors={["#223441"]}
-                  showDateDisplay={false}
-                />
-
-                {/* TRAVELERS */}
-                <div className="space-y-3">
-                  <Counter
-                    label="Adults"
-                    value={form.adults}
-                    min={1}
-                    onChange={(value) => updateField("adults", value)}
-                  />
-
-                  <Counter
-                    label="Children"
-                    value={form.children}
-                    onChange={(value) => updateField("children", value)}
-                  />
-
-                  <Counter
-                    label="Infants"
-                    value={form.infants}
-                    onChange={(value) => updateField("infants", value)}
-                  />
-                </div>
-
-                {/* PICKUP */}
+              <div className="space-y-6 rounded-sm">
                 <div>
-                  <label className="text-sm font-medium text-gray-900">
-                    Pickup / Meeting Point
-                  </label>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                    Participants
+                  </h3>
 
-                  <div className="relative mt-2">
-                    <MapPin
-                      size={18}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                  <div className="space-y-3">
+                    <Counter
+                      label="Adults"
+                      value={form.adults}
+                      min={1}
+                      onChange={(value) => updateField("adults", value)}
                     />
 
-                    <input
-                      type="text"
-                      name="pickup"
-                      value={form.pickup}
-                      onChange={onChange}
-                      placeholder={
-                        product.pickup || "Where should we pick you up?"
-                      }
-                      className="w-full rounded-sm border bg-gray-50 border-gray-300 py-3 pl-10 pr-3 text-sm outline-none focus:border-[#223441]"
+                    <Counter
+                      label="Children"
+                      value={form.children}
+                      onChange={(value) => updateField("children", value)}
+                    />
+
+                    <Counter
+                      label="Infants"
+                      value={form.infants}
+                      onChange={(value) => updateField("infants", value)}
                     />
                   </div>
                 </div>
 
-                {/* NAME */}
                 <div>
-                  <label className="text-sm font-medium text-gray-900">
-                    Full Name
-                  </label>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                    Select Dates
+                  </h3>
 
-                  <div className="relative mt-2">
-                    <User
-                      size={18}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
-                    />
+                  <DateRange
+                    onChange={(item) => {
+                      setDateRange([item.selection]);
 
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={form.fullName}
-                      onChange={onChange}
-                      required
-                      className="w-full rounded-sm border bg-gray-50 border-gray-300 py-3 pl-10 pr-3 text-sm outline-none focus:border-[#223441]"
-                    />
-                  </div>
-                </div>
-
-                {/* EMAIL */}
-                <div>
-                  <label className="text-sm font-medium text-gray-900">
-                    Email
-                  </label>
-
-                  <div className="relative mt-2">
-                    <Mail
-                      size={18}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
-                    />
-
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={onChange}
-                      required
-                      className="w-full rounded-sm border bg-gray-50 border-gray-300 py-3 pl-10 pr-3 text-sm outline-none focus:border-[#223441]"
-                    />
-                  </div>
-                </div>
-
-                {/* PHONE */}
-                <div>
-                  <label className="text-sm font-medium text-gray-900">
-                    Phone / WhatsApp
-                  </label>
-
-                  <div className="relative mt-2">
-                    <Phone
-                      size={18}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
-                    />
-
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={onChange}
-                      placeholder="+263..."
-                      className="w-full rounded-sm border bg-gray-50 border-gray-300 py-3 pl-10 pr-3 text-sm outline-none focus:border-[#223441]"
-                    />
-                  </div>
-                </div>
-
-                {/* NOTES */}
-                <div>
-                  <label className="text-sm font-medium text-gray-900">
-                    Notes
-                  </label>
-
-                  <textarea
-                    name="notes"
-                    value={form.notes}
-                    onChange={onChange}
-                    rows={4}
-                    placeholder="Anything we should know?"
-                    className="mt-2 w-full rounded-sm border bg-gray-50 border-gray-300 px-3 py-3 text-sm outline-none focus:border-[#223441]"
+                      setForm((current) => ({
+                        ...current,
+                        startDate: item.selection.startDate
+                          .toISOString()
+                          .split("T")[0],
+                        endDate: item.selection.endDate
+                          .toISOString()
+                          .split("T")[0],
+                      }));
+                    }}
+                    moveRangeOnFirstSelection={false}
+                    ranges={dateRange}
+                    minDate={new Date()}
+                    rangeColors={["#223441"]}
+                    showDateDisplay={false}
                   />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                    Enter Your Details
+                  </h3>
+
+                  <div className="space-y-3">
+                    {/* NAME */}
+                    <div className="relative">
+                      <User
+                        size={18}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                      />
+
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={form.fullName}
+                        onChange={onChange}
+                        required
+                        placeholder="Full Name"
+                        className="w-full rounded-sm border border-gray-300 bg-gray-50 py-3 pl-10 pr-3 text-sm outline-none focus:border-[#223441]"
+                      />
+                    </div>
+
+                    {/* EMAIL */}
+                    <div className="relative">
+                      <Mail
+                        size={18}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                      />
+
+                      <input
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={onChange}
+                        required
+                        placeholder="Email Address"
+                        className="w-full rounded-sm border border-gray-300 bg-gray-50 py-3 pl-10 pr-3 text-sm outline-none focus:border-[#223441]"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* SUMMARY */}
-                <div className="border-t border-gray-300 pt-4 space-y-3 text-sm">
+                <div className="border-t border-gray-300 pt-2 space-y-4 text-sm">
                   <div className="flex justify-between">
                     <span>Adults x {form.adults}</span>
                     <span className="font-semibold">
@@ -999,19 +940,14 @@ function ProductDetails() {
                 {/* BUTTON */}
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-white transition hover:opacity-90"
+                  className="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
                   style={{
                     backgroundColor: "#223441",
                     borderRadius: "2px",
                   }}
                 >
-                  Confirm & Send on WhatsApp
+                  Book Now
                 </button>
-
-                <p className="text-xs text-gray-600">
-                  Booking requests are sent directly through WhatsApp for
-                  confirmation.
-                </p>
               </div>
             </form>
           </aside>
