@@ -5,14 +5,9 @@ import zazuLogo from "../../assets/zazulogo.png";
 
 function Navbar() {
   const navLinks = [
-    {
-      name: "Destinations",
-      to: "/destinations",
-      type: "link",
-    },
 
     {
-      name: "Tours & Transfers",
+      name: "Activities ",
       type: "dropdown",
       items: [
         {
@@ -111,7 +106,7 @@ function Navbar() {
 
   const linkClass = ({ isActive }) =>
     `relative text-sm font-medium after:block after:absolute after:left-0 after:h-[2px] after:bg-current after:-bottom-2 after:transition-all after:duration-300 ${
-      scrolled ? "text-black" : "text-white"
+      scrolled ? "text-black hover:text-[#223441]" : "text-white hover:text-white/80"
     } ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full"}`;
 
   return (
@@ -157,7 +152,7 @@ function Navbar() {
                     type="button"
                     className={`inline-flex items-center gap-1 text-sm font-medium transition-colors ${
                       scrolled
-                        ? "text-black hover:text-[#829442]"
+                        ? "text-black hover:text-[#223441]"
                         : "text-white hover:text-white/80"
                     }`}
                     onClick={() =>
@@ -182,7 +177,7 @@ function Navbar() {
                         <NavLink
                           key={item.name}
                           to={item.to}
-                          className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#829442]"
+                          className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#223441]"
                           onClick={() => setOpenDropdown(null)}
                         >
                           {item.name}

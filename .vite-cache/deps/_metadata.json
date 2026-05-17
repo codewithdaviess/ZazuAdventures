@@ -1,0 +1,73 @@
+{
+  "hash": "ae9991d0",
+  "configHash": "b54b3c79",
+  "lockfileHash": "ffe6289a",
+  "browserHash": "e6fad06a",
+  "optimized": {
+    "react": {
+      "src": "../../../../../../Users/davie/AppData/Local/Yarn/Berry/cache/react-npm-19.2.3-0ecd9e5a6e-10c0.zip/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "00c8690f",
+      "needsInterop": true
+    },
+    "react-dom": {
+      "src": "../../.yarn/__virtual__/react-dom-virtual-b842103bff/5/Users/davie/AppData/Local/Yarn/Berry/cache/react-dom-npm-19.2.3-93a2378518-10c0.zip/node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "a285be22",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../../../../../Users/davie/AppData/Local/Yarn/Berry/cache/react-npm-19.2.3-0ecd9e5a6e-10c0.zip/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "4dcbdb19",
+      "needsInterop": true
+    },
+    "react/jsx-runtime": {
+      "src": "../../../../../../Users/davie/AppData/Local/Yarn/Berry/cache/react-npm-19.2.3-0ecd9e5a6e-10c0.zip/node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "7116b980",
+      "needsInterop": true
+    },
+    "framer-motion": {
+      "src": "../../.yarn/__virtual__/framer-motion-virtual-74723ac9fa/5/Users/davie/AppData/Local/Yarn/Berry/cache/framer-motion-npm-12.23.26-080a2b45e0-10c0.zip/node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "b6c077fb",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../.yarn/__virtual__/lucide-react-virtual-dbcf67a19f/5/Users/davie/AppData/Local/Yarn/Berry/cache/lucide-react-npm-0.561.0-265b559dab-10c0.zip/node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "13ecb981",
+      "needsInterop": false
+    },
+    "react-date-range": {
+      "src": "../../.yarn/__virtual__/react-date-range-virtual-2e7be4fa4a/5/Users/davie/AppData/Local/Yarn/Berry/cache/react-date-range-npm-2.0.1-c7d518db08-10c0.zip/node_modules/react-date-range/dist/index.js",
+      "file": "react-date-range.js",
+      "fileHash": "9759ca6e",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../.yarn/__virtual__/react-dom-virtual-b842103bff/5/Users/davie/AppData/Local/Yarn/Berry/cache/react-dom-npm-19.2.3-93a2378518-10c0.zip/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ae0cc544",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../.yarn/__virtual__/react-router-dom-virtual-3b2352e0f8/5/Users/davie/AppData/Local/Yarn/Berry/cache/react-router-dom-npm-7.10.1-21ee5a2e1e-10c0.zip/node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "b518d3a9",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-EQS4KICX": {
+      "file": "chunk-EQS4KICX.js"
+    },
+    "chunk-PFMPVZIB": {
+      "file": "chunk-PFMPVZIB.js"
+    },
+    "chunk-T234CN4V": {
+      "file": "chunk-T234CN4V.js"
+    }
+  }
+}

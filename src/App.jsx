@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./lib/ScrollToTop";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+
 import Destinations from "./pages/Destinations";
-import AirportTransfers from "./pages/AirportTransfers";
-import HotelTransfers from "./pages/HotelTransfers";
-import CrossBorderTransfers from "./pages/CrossBorderTransfers";
-import GuidedTours from "./pages/GuidedTours";
-import VictoriaFallsPackages from "./pages/VictoriaFallsPackages";
-import ChobePackages from "./pages/ChobePackages";
-import MultiDaySafaris from "./pages/MultiDaySafaris";
+import DestinationDetail from "./pages/DestinationDetail";
+
+import ProductDetails from "./pages/ProductDetails";
+import Book from "./pages/Book";
+import BookingConfirmation from "./pages/BookingConfirmation";
 
 function App() {
   return (
@@ -19,14 +19,15 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        {/* DESTINATIONS */}
         <Route path="/destinations" element={<Destinations />} />
-        <Route path="/airport-transfers" element={<AirportTransfers />} />
-        <Route path="/hotel-transfers" element={<HotelTransfers />} />
-        <Route path="/cross-border-transfers" element={<CrossBorderTransfers />} />
-        <Route path="/guided-tours" element={<GuidedTours />} />
-        <Route path="/victoria-falls-packages" element={<VictoriaFallsPackages />} />
-        <Route path="/chobe-packages" element={<ChobePackages />} />
-        <Route path="/multi-day-safaris" element={<MultiDaySafaris />} />
+        <Route path="/destinations/:slug" element={<DestinationDetail />} />
+
+        <Route path="/products/:slug" element={<ProductDetails />} />
+        <Route path="/book/:slug" element={<Book />} />
+        <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />

@@ -1,12 +1,24 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
+import Layout from "../components/layout/Layout";
 import { Clock3 } from "lucide-react";
-import { destinations, activities } from "../../data/content";
+import { destinations, activities } from "../data/content";
+import { MapPin } from "lucide-react";
 
-function Activities() {
+function DestinationDetail() {
   const { slug } = useParams();
 
   const destination = destinations.find((d) => d.id === slug);
+
+  if (!destination) {
+    return (
+      <Layout>
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          <h1 className="text-2xl font-semibold">Destination not found</h1>
+        </div>
+      </Layout>
+    );
+  }
 
   // Rating circles (clean full / half / empty)
   const renderRating = (rating) => {
@@ -19,7 +31,7 @@ function Activities() {
           <div
             key={i}
             className="w-2.5 h-2.5 rounded-full bg-[#223441] border border-[#223441]"
-          />
+          />,
         );
       } else if (rating >= i - 0.5) {
         // HALF
@@ -43,30 +55,36 @@ function Activities() {
     return circles;
   };
 
-  return (
-    <section className="py-16" id="activities">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="mb-10">
-          <h2 className="text-lg lg:text-lg font-semibold text-dark">
-            Available Activities
-          </h2>
+  const filteredActivities = activities.filter(
+    (a) => a.destinationId === destination.id,
+  );
 
-          <p className="mt-2 text-md lg:text-md font-regular text-gray-600">
-            Explore our curated list of activities and experiences during your
-            stay
-          </p>
+  return (
+    <Layout>
+      <div className="mx-auto max-w-6xl px-6 py-12">
+        {/* Header */}
+        <h1 className="text-3xl font-semibold">{destination.name}</h1>
+
+        <div className="flex items-center gap-2 text-sm text-gray-500 mt-2">
+          <MapPin size={14} />
+          <span>{destination.country}</span>
         </div>
 
-        {/* Grid */}
+        <p className="mt-4 text-gray-700">{destination.description}</p>
+
+        {/* Activities */}
+        <h2 className="mt-10 text-xl font-semibold">
+          Things to do in {destination.name}
+        </h2>
+
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {activities.map((activity) => (
+          {filteredActivities.map((activity) => (
             <Link
               key={activity.id}
               to={`/products/${activity.slug}`}
               className="bg-white rounded-sm flex flex-col group
-                                 transform transition-transform duration-300 ease-in-out
-                                 hover:shadow-md border border-gray-300"
+                         transform transition-transform duration-300 ease-in-out
+                         hover:shadow-md border border-gray-300"
             >
               {/* Image */}
               <div className="p-4 overflow-hidden rounded-sm">
@@ -76,14 +94,14 @@ function Activities() {
                     alt={activity.title}
                     loading="lazy"
                     className="w-full h-full object-cover rounded-sm
-                                                     transform transition-transform duration-500 ease-in-out
-                                                     group-hover:scale-105"
+                                             transform transition-transform duration-500 ease-in-out
+                                             group-hover:scale-105"
                   />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="px-4 py-2 flex flex-col flex-1">
+              <div className="px-4 py-4 flex flex-col flex-1">
                 {/* Title */}
                 <h3 className="text-md font-semibold text-dark mb-2">
                   {activity.title}
@@ -128,8 +146,8 @@ function Activities() {
           ))}
         </div>
       </div>
-    </section>
+    </Layout>
   );
 }
 
-export default Activities;
+export default DestinationDetail;

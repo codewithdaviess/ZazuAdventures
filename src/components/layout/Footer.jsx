@@ -66,9 +66,8 @@ const WhatsAppIcon = ({ className = "" }) => (
 const footerLinks = [
   { label: "Home", href: "/" },
   { label: "Tours & Packages", href: "/tours-packages" },
-  { label: "Destinations", href: "/destinations" },
   { label: "Travel Info", href: "/travel-info" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const destinations = [
@@ -130,7 +129,7 @@ function Footer() {
             </p>
 
             <a
-              href="#contact"
+              href="/contact"
               className="mt-6 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
               style={{
                 backgroundColor: "#223441",

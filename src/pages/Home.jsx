@@ -5,6 +5,7 @@ import DestinationGrid from "../components/homepage/DestinationGrid";
 import Welcome from "../components/homepage/Welcome";
 import Activities from "../components/homepage/Activities";
 import FAQs from "../components/homepage/FAQs";
+import Testimonials from "../components/homepage/Testimonials";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <Welcome />
       <Activities />
       <FAQs />
+      <Testimonials />
     </Layout>
   );
 }
