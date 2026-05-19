@@ -10,6 +10,7 @@ import Destinations from "./pages/Destinations";
 import DestinationDetail from "./pages/DestinationDetail";
 
 import ProductDetails from "./pages/ProductDetails";
+import Products from "./pages/Products";
 import Book from "./pages/Book";
 import BookingConfirmation from "./pages/BookingConfirmation";
 
@@ -24,6 +25,9 @@ function App() {
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/destinations/:slug" element={<DestinationDetail />} />
 
+        {/* PRODUCTS */}
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/type/:type" element={<Products />} />
         <Route path="/products/:slug" element={<ProductDetails />} />
         <Route path="/book/:slug" element={<Book />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />

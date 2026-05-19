@@ -65,8 +65,8 @@ const WhatsAppIcon = ({ className = "" }) => (
 
 const footerLinks = [
   { label: "Home", href: "/" },
-  { label: "Tours & Packages", href: "/tours-packages" },
-  { label: "Travel Info", href: "/travel-info" },
+  { label: "Explore", href: "/products" },
+  { label: "Destinations", href: "/destinations" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -113,7 +113,7 @@ const socialLinks = [
 ];
 
 const footerLinkClass =
-  "text-sm text-[#3c4345] transition hover:text-[#b1b468] hover:underline hover:underline-offset-4";
+  "text-sm text-[#3c4345] transition hover:text-[#223441] hover:underline hover:underline-offset-4";
 
 function Footer() {
   return (
@@ -213,7 +213,7 @@ function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={socialLink.label}
-                className="flex h-10 w-10 items-center justify-center border border-black/10 bg-white text-[#161b1d] transition hover:-translate-y-0.5 hover:border-[#b1b468] hover:text-[#b1b468]"
+                className="flex h-10 w-10 items-center justify-center border border-black/10 bg-white text-[#161b1d] transition hover:-translate-y-0.5 hover:border-[#223441] hover:text-[#223441]"
                 style={{ borderRadius: "2px" }}
               >
                 <socialLink.Icon className="h-5 w-5" />

@@ -1,12 +1,17 @@
 import React, { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Layout from "../components/layout/Layout";
-import { activities, destinations, getProductBySlug } from "../data/content";
-import { useNavigate } from "react-router-dom";
+import {
+  activities,
+  company,
+  destinations,
+  getProductBySlug,
+} from "../data/content";
 import { saveLastBooking } from "../lib/bookingStorage";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
+import ExpandableText from "../components/shared/ExpandableText";
 import {
   CalendarDays,
   Mail,
@@ -89,7 +94,6 @@ function Gallery({ images }) {
 
   const MAX_PREVIEW = 10;
   const previewImages = images.slice(0, MAX_PREVIEW);
-  const hasMore = images.length > MAX_PREVIEW;
 
   const isFirst = index === 0;
   const isLast = index === images.length - 1;
@@ -112,9 +116,9 @@ function Gallery({ images }) {
   }
 
   return (
-    <div className="mt-2">
+    <div>
       {/* MAIN IMAGE */}
-      <div className="relative mt-4 w-full overflow-hidden rounded-sm border border-gray-300 bg-white">
+      <div className="relative w-full overflow-hidden rounded-sm border border-gray-300 bg-white">
         <img
           src={images[index]}
           alt={`Gallery ${index + 1}`}
@@ -574,11 +578,7 @@ function ItineraryEditor({ itineraryDays, onChangePlan }) {
 function ProductDetails() {
   const { slug } = useParams();
   const product = getProductBySlug(slug);
-  const [travelers, setTravelers] = useState(2);
-  const [plan, setPlan] = useState(null);
-  const todayIso = useMemo(() => {
-    return new Date().toISOString().split("T")[0];
-  }, []);
+  const [_plan, setPlan] = useState(null);
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -650,10 +650,6 @@ function ProductDetails() {
     ? product.gallery
     : [product.imageUrl].filter(Boolean);
 
-  const addOnsPerPerson = plan?.addOnsPerPerson || 0;
-  const estimatedPerPerson = (Number(product.priceFrom) || 0) + addOnsPerPerson;
-  const estimatedTotal = estimatedPerPerson * (Number(travelers) || 1);
-
   return (
     <Layout>
       <div className="mx-auto max-w-6xl px-6 py-3">
@@ -662,9 +658,13 @@ function ProductDetails() {
             <Gallery images={galleryImages} />
 
             <h2 className="text-2xl mt-6 font-semibold">{product.title}</h2>
-            <p className="mt-3 text-sm text-gray-600">
-              {product.longDescription}
-            </p>
+            <ExpandableText
+              text={product.longDescription}
+              lines={4}
+              className="mt-3 text-sm text-gray-600"
+              moreLabel="Show more details"
+              lessLabel="Show less"
+            />
 
             <div className="mt-5 text-2xl font-semibold text-gray-900">
               ${product.priceFrom}{" "}
@@ -734,8 +734,10 @@ function ProductDetails() {
           </div>
 
           <aside className="h-fit rounded-sm border border-gray-300 bg-white p-6 lg:sticky lg:top-32">
-            <h1 className="text-2xl font-semibold">Complete Your Booking</h1>
-            <div className="text-sm text-gray-600">Estimated pricing</div>
+            <h1 className="text-2xl font-semibold">Request on WhatsApp</h1>
+            <div className="text-sm text-gray-600">
+              We’ll confirm availability and send payment options.
+            </div>
 
             {/* BOOKING FORM */}
             <form
@@ -793,8 +795,6 @@ function ProductDetails() {
                   .join("\n");
 
                 const whatsappLink = `${company.contact.whatsappLink}?text=${encodeURIComponent(text)}`;
-
-                window.open(whatsappLink, "_blank");
 
                 window.open(whatsappLink, "_blank");
               }}
@@ -946,7 +946,7 @@ function ProductDetails() {
                     borderRadius: "2px",
                   }}
                 >
-                  Book Now
+                  Send on WhatsApp
                 </button>
               </div>
             </form>

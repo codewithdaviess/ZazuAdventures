@@ -5,46 +5,16 @@ import zazuLogo from "../../assets/zazulogo.png";
 
 function Navbar() {
   const navLinks = [
-
+    { name: "Destinations", to: "/destinations", type: "link" },
     {
-      name: "Activities ",
+      name: "Explore",
       type: "dropdown",
       items: [
-        {
-          name: "Airport Transfers",
-          to: "/airport-transfers",
-        },
-        {
-          name: "Hotel Transfers",
-          to: "/hotel-transfers",
-        },
-        {
-          name: "Cross Border Transfers",
-          to: "/cross-border-transfers",
-        },
-        {
-          name: "Guided Tours",
-          to: "/guided-tours",
-        },
-      ],
-    },
-
-    {
-      name: "Holiday Packages",
-      type: "dropdown",
-      items: [
-        {
-          name: "Victoria Falls Packages",
-          to: "/victoria-falls-packages",
-        },
-        {
-          name: "Chobe Packages",
-          to: "/chobe-packages",
-        },
-        {
-          name: "Multi-Day Safaris",
-          to: "/multi-day-safaris",
-        },
+        { name: "All", to: "/products" },
+        { name: "Tours", to: "/products/type/tour" },
+        { name: "Transfers", to: "/products/type/transfer" },
+        { name: "Packages", to: "/products/type/package" },
+        { name: "Accommodation (Soon)", to: "/products/type/accommodation" },
       ],
     },
 
