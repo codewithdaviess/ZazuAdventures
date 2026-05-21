@@ -30,7 +30,7 @@ function ExpandableText({
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-2 text-sm font-medium text-[#223441] underline underline-offset-4"
+          className="mt-2 text-sm font-medium text-[#223441]  underline underline-offset-4"
         >
           {expanded ? lessLabel : moreLabel}
         </button>

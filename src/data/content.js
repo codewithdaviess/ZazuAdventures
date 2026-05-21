@@ -114,9 +114,9 @@ export const destinations = [
     imageUrl: davies,
   },
   {
-    id: "kafue",
-    name: "Kafue National Park",
-    country: "Zambia",
+    id: "zafue",
+    name: "Zafue National Park",
+    country: "Gambia",
     description:
       "Huge wilderness with floodplains, forests, and remote safari lodges.",
     bestTimeToVisit:
@@ -134,9 +134,100 @@ export const activities = [
   {
     id: "guided-falls-tour",
     slug: "victoria-falls-guided-tour",
+
     type: "tour",
     category: "Guided Tours",
+
+    // TITLE
     title: "Guided Tour of Victoria Falls",
+
+    // QUICK INFO ROW
+    duration: "2 Hours",
+    groupSize: "1–50 People",
+    activityType: "Guided Walking Tour",
+    departureLocation: "Victoria Falls Rainforest Entrance",
+    languages: ["English"],
+
+    // DESTINATION
+    destinationId: "victoria-falls",
+    destinations: ["victoria-falls"],
+    destination: "Victoria Falls",
+
+    // PRICE
+    price: 30,
+    priceFrom: 30,
+    childPriceFrom: 15,
+    infantPriceFrom: 0,
+    priceUnit: "per person",
+
+    // REVIEWS
+    rating: 4.7,
+    reviews: 210,
+
+    // SHORT DESCRIPTION
+    shortDescription:
+      "Discover the breathtaking beauty of Victoria Falls on a professionally guided rainforest walk featuring panoramic viewpoints, fascinating local stories, and unforgettable moments beside one of the world’s greatest natural wonders.",
+
+    // SEO DESCRIPTION
+    description:
+      "Experience Victoria Falls on a guided walking tour through the rainforest with stunning viewpoints, local insights, and unforgettable scenery beside one of the Seven Natural Wonders of the World.",
+
+    // GALLERY
+    imageUrl: davies,
+    gallery: [heroImage, gallery2, contour],
+
+    companyName: "Zazu Adventures",
+
+    // HIGHLIGHTS
+    highlights: [
+      "Guided rainforest walk",
+      "Breathtaking waterfall viewpoints",
+      "Professional local guide",
+      "Photography opportunities",
+      "Learn the history and geology of Victoria Falls",
+      "Experience the mist and thunder of the Falls",
+    ],
+
+    // FULL DESCRIPTION
+    longDescription:
+      "Experience the awe-inspiring beauty of Victoria Falls on a guided walking tour designed to immerse you in the wonder, power, and history of Africa’s most iconic waterfall.\n\nFollow scenic rainforest trails with an experienced local guide who brings the Falls to life through fascinating stories, historical insights, and knowledge of the region’s unique geology and wildlife.\n\nAs the thunder of cascading water echoes around you, stop at spectacular viewpoints offering unforgettable panoramic views and incredible photography moments. Feel the refreshing mist on your skin and witness the dramatic landscapes carved by the mighty Zambezi River.\n\nWhether you are visiting for the first time or returning to experience its beauty again, this tour offers the perfect balance of adventure, discovery, and unforgettable scenery for couples, families, solo travellers, and nature lovers.",
+
+    // INCLUDED / EXCLUDED
+    includes: [
+      "Professional local guide",
+      "Guided rainforest tour",
+      "Photo stops at major viewpoints",
+    ],
+
+    excludes: [
+      "Victoria Falls National Park entry fees",
+      "Transfers",
+      "Meals and drinks",
+      "Personal expenses",
+    ],
+
+    // ITINERARY
+    itineraryDays: [
+      {
+        day: 1,
+        title: "Arrival & Rainforest Exploration",
+        locationId: "victoria-falls",
+        details:
+          "Meet your professional guide at the rainforest entrance and begin your journey through the scenic walking trails of Victoria Falls. Visit the most spectacular viewpoints while learning about the history, geology, and cultural significance of the Falls.",
+        activityIds: [],
+      },
+    ],
+
+    // POLICIES
+    policies: commonPolicies,
+  },
+
+  {
+    id: "falls-bridge-tour",
+    slug: "victoria-falls-bridge-tour",
+    type: "tour",
+    category: "Guided Tours",
+    title: "Victoria Falls Bridge Tour",
     description: "Explore the Falls with a professional guide.",
     shortDescription: "Explore Victoria Falls with a professional local guide.",
     longDescription:
@@ -161,7 +252,7 @@ export const activities = [
 
   {
     id: "village-tour",
-    slug: "livingstone-village-cultural-tour",
+    slug: "monde-village-cultural-tour",
     type: "tour",
     category: "Cultural Tours",
     title: "Village Cultural Tour",
@@ -212,23 +303,127 @@ export const activities = [
   },
 
   {
-    id: "airport-transfer",
-    slug: "livingstone-airport-transfer",
-    type: "transfer",
-    category: "Airport Transfers",
-    title: "Airport Transfers",
-    description: "Private transfers to and from airports.",
-    shortDescription: "Comfortable and reliable airport transfers.",
+    id: "flight-of-angels",
+    slug: "17-mins-flight-of-angels",
+    type: "activity",
+    category: "Adventure Activities",
+    title: "17 mins Helicopter Flight",
+    description: "Swim at the edge of Victoria Falls (seasonal).",
+    shortDescription:
+      "Swim at the edge of Victoria Falls during low-water season.",
     longDescription:
-      "Private airport transfers with professional drivers and luggage assistance.",
-    destinationId: "livingstone",
-    destinations: ["livingstone"],
-    destination: "Livingstone",
-    price: 30,
-    priceFrom: 30,
+      "A thrilling guided experience to Devil’s Pool on Livingstone Island.",
+    destinationId: "victoria-falls",
+    destinations: ["victoria-falls"],
+    destination: "Victoria Falls",
+    price: 135,
+    priceFrom: 135,
     priceUnit: "per person",
-    rating: 4.5,
-    reviews: 90,
+    rating: 4.9,
+    reviews: 300,
+    duration: "2–3 Hours",
+    imageUrl: davies,
+    gallery: [heroImage, gallery2],
+    companyName: "Zazu Adventures",
+    policies: commonPolicies,
+  },
+
+  {
+    id: "flight-of-angels",
+    slug: "25-mins-flight-of-angels",
+    type: "activity",
+    category: "Adventure Activities",
+    title: "25 mins Helicopter Flight",
+    description: "Swim at the edge of Victoria Falls (seasonal).",
+    shortDescription:
+      "Swim at the edge of Victoria Falls during low-water season.",
+    longDescription:
+      "A thrilling guided experience to Devil’s Pool on Livingstone Island.",
+    destinationId: "victoria-falls",
+    destinations: ["victoria-falls"],
+    destination: "Victoria Falls",
+    price: 285,
+    priceFrom: 285,
+    priceUnit: "per person",
+    rating: 4.9,
+    reviews: 300,
+    duration: "2–3 Hours",
+    imageUrl: davies,
+    gallery: [heroImage, gallery2],
+    companyName: "Zazu Adventures",
+    policies: commonPolicies,
+  },
+
+  {
+    id: "white-water-rafting",
+    slug: "half-day-white-water-rafting",
+    type: "activity",
+    category: "Adventure Activities",
+    title: "Half Day White Water Rafting",
+    description: "Swim at the edge of Victoria Falls (seasonal).",
+    shortDescription:
+      "Swim at the edge of Victoria Falls during low-water season.",
+    longDescription:
+      "A thrilling guided experience to Devil’s Pool on Livingstone Island.",
+    destinationId: "victoria-falls",
+    destinations: ["victoria-falls"],
+    destination: "Victoria Falls",
+    price: 165,
+    priceFrom: 165,
+    priceUnit: "per person",
+    rating: 4.9,
+    reviews: 300,
+    duration: "2–3 Hours",
+    imageUrl: davies,
+    gallery: [heroImage, gallery2],
+    companyName: "Zazu Adventures",
+    policies: commonPolicies,
+  },
+
+  {
+    id: "white-water-rafting",
+    slug: "full-day-white-water-rafting",
+    type: "activity",
+    category: "Adventure Activities",
+    title: "Full Day White Water Rafting",
+    description: "Swim at the edge of Victoria Falls (seasonal).",
+    shortDescription:
+      "Swim at the edge of Victoria Falls during low-water season.",
+    longDescription:
+      "A thrilling guided experience to Devil’s Pool on Livingstone Island.",
+    destinationId: "victoria-falls",
+    destinations: ["victoria-falls"],
+    destination: "Victoria Falls",
+    price: 235,
+    priceFrom: 235,
+    priceUnit: "per person",
+    rating: 4.9,
+    reviews: 300,
+    duration: "2–3 Hours",
+    imageUrl: davies,
+    gallery: [heroImage, gallery2],
+    companyName: "Zazu Adventures",
+    policies: commonPolicies,
+  },
+
+  {
+    id: "safari ",
+    slug: "victoria-falls-bridge-swing",
+    type: "activity",
+    category: "Adventure Activities",
+    title: "Bridge Swing",
+    description: "Free-fall swing over the gorge.",
+    shortDescription: "Experience a thrilling free-fall bridge swing.",
+    longDescription:
+      "Leap from the bridge platform and swing across the Batoka Gorge.",
+    destinationId: "victoria-falls",
+    destinations: ["victoria-falls"],
+    destination: "Victoria Falls",
+    price: 115,
+    priceFrom: 115,
+    priceUnit: "per person",
+    rating: 4.8,
+    reviews: 180,
     duration: "1 Hour",
     imageUrl: davies,
     gallery: [heroImage],
@@ -279,6 +474,31 @@ export const activities = [
     priceUnit: "per person",
     rating: 4.9,
     reviews: 400,
+    duration: "1 Hour",
+    imageUrl: davies,
+    gallery: [heroImage],
+    companyName: "Zazu Adventures",
+    policies: commonPolicies,
+  },
+
+  {
+    id: "airport-transfer",
+    slug: "livingstone-airport-transfer",
+    type: "transfer",
+    category: "Airport Transfers",
+    title: "Airport Transfers",
+    description: "Private transfers to and from airports.",
+    shortDescription: "Comfortable and reliable airport transfers.",
+    longDescription:
+      "Private airport transfers with professional drivers and luggage assistance.",
+    destinationId: "livingstone",
+    destinations: ["livingstone"],
+    destination: "Livingstone",
+    price: 30,
+    priceFrom: 30,
+    priceUnit: "per person",
+    rating: 4.5,
+    reviews: 90,
     duration: "1 Hour",
     imageUrl: davies,
     gallery: [heroImage],

@@ -1,35 +1,24 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Layout from "../components/layout/Layout";
-import {
-  activities,
-  company,
-  destinations,
-  getProductBySlug,
-} from "../data/content";
+import { company, getProductBySlug } from "../data/content";
 import { saveLastBooking } from "../lib/bookingStorage";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 import ExpandableText from "../components/shared/ExpandableText";
 import {
-  CalendarDays,
   Mail,
-  Phone,
   User,
   BadgeCheck,
   BadgeX,
   ChevronLeft,
   ChevronRight,
   Clock3,
-  Image as ImageIcon,
   Info,
   Layers,
   MapPin,
-  Pencil,
-  Plus,
   Sparkles,
-  Trash2,
   Users,
 } from "lucide-react";
 
@@ -254,331 +243,9 @@ function Gallery({ images }) {
   );
 }
 
-function ItineraryEditor({ itineraryDays, onChangePlan }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [draft, setDraft] = useState(
-    itineraryDays.map((d) => ({
-      ...d,
-      locationId: d.locationId || "",
-      activityIds: Array.isArray(d.activityIds) ? d.activityIds : [],
-    })),
-  );
-  const [savedDraft, setSavedDraft] = useState(
-    itineraryDays.map((d) => ({
-      ...d,
-      locationId: d.locationId || "",
-      activityIds: Array.isArray(d.activityIds) ? d.activityIds : [],
-    })),
-  );
-  const [copied, setCopied] = useState(false);
-
-  function updateDay(index, patch) {
-    setDraft((current) =>
-      current.map((day, i) => (i === index ? { ...day, ...patch } : day)),
-    );
-  }
-
-  function addDay() {
-    setDraft((current) => [
-      ...current,
-      {
-        day: current.length + 1,
-        title: "New day",
-        locationId: "",
-        details: "",
-        activityIds: [],
-      },
-    ]);
-  }
-
-  function removeDay(index) {
-    setDraft((current) => current.filter((_, i) => i !== index));
-  }
-
-  const normalized = useMemo(
-    () => draft.map((d, index) => ({ ...d, day: index + 1 })),
-    [draft],
-  );
-
-  const destinationsById = useMemo(() => {
-    return new Map(destinations.map((d) => [d.id, d]));
-  }, []);
-
-  const itineraryText = useMemo(() => {
-    return normalized
-      .map((d) => {
-        const locationName = d.locationId
-          ? destinationsById.get(d.locationId)?.name || d.locationId
-          : "";
-        const header = `Day ${d.day}: ${d.title}${
-          locationName ? ` (${locationName})` : ""
-        }`;
-        const selectedActivities = activities
-          .filter((a) => d.activityIds.includes(a.id))
-          .map((a) => `- ${a.title} ($${a.price}/person)`)
-          .join("\n");
-
-        return [
-          header,
-          d.details,
-          selectedActivities ? `Activities:\n${selectedActivities}` : null,
-        ]
-          .filter(Boolean)
-          .join("\n");
-      })
-      .join("\n\n");
-  }, [destinationsById, normalized]);
-
-  const addOnsPerPerson = useMemo(() => {
-    const priceById = new Map(
-      activities.map((a) => [a.id, Number(a.price) || 0]),
-    );
-    return normalized.reduce((sum, d) => {
-      const daySum = d.activityIds.reduce(
-        (dayTotal, id) => dayTotal + (priceById.get(id) || 0),
-        0,
-      );
-      return sum + daySum;
-    }, 0);
-  }, [normalized]);
-
-  const plan = useMemo(
-    () => ({
-      itineraryDays: normalized,
-      itineraryText,
-      addOnsPerPerson,
-    }),
-    [addOnsPerPerson, itineraryText, normalized],
-  );
-
-  React.useEffect(() => {
-    onChangePlan?.(plan);
-  }, [onChangePlan, plan]);
-
-  const isDirty = useMemo(() => {
-    return JSON.stringify(draft) !== JSON.stringify(savedDraft);
-  }, [draft, savedDraft]);
-
-  function saveEdits() {
-    setSavedDraft(draft);
-    setIsEditing(false);
-  }
-
-  function revertEdits() {
-    setDraft(savedDraft);
-  }
-
-  async function copyToClipboard() {
-    try {
-      await navigator.clipboard.writeText(itineraryText);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1200);
-    } catch {
-      // ignore
-    }
-  }
-
-  return (
-    <div className="mt-10 rounded-sm border border-gray-300 bg-white p-6">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-md font-semibold">Itinerary</h2>
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            onClick={copyToClipboard}
-            className="text-sm font-medium text-[#223441] hover:underline"
-          >
-            {copied ? "Copied" : "Copy itinerary"}
-          </button>
-          <button
-            type="button"
-            onClick={() => setIsEditing((v) => !v)}
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#223441] hover:underline"
-          >
-            <Pencil size={16} />
-            {isEditing ? "Stop editing" : "Edit itinerary"}
-          </button>
-        </div>
-      </div>
-
-      <div className="mt-6 space-y-4">
-        {normalized.map((day, index) => (
-          <div
-            key={`${day.day}-${index}`}
-            className="rounded-sm border border-gray-200 p-4"
-          >
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div className="min-w-0">
-                <div className="text-xs font-semibold text-gray-600">
-                  Day {day.day}
-                </div>
-
-                {!isEditing ? (
-                  <>
-                    <div className="mt-1 text-sm font-semibold text-gray-900">
-                      {day.title}
-                    </div>
-                    {day.locationId ? (
-                      <div className="mt-1 text-xs text-gray-600">
-                        {destinationsById.get(day.locationId)?.name ||
-                          day.locationId}
-                      </div>
-                    ) : null}
-                  </>
-                ) : (
-                  <div className="mt-2 grid gap-3 sm:grid-cols-2">
-                    <input
-                      value={day.title}
-                      onChange={(e) =>
-                        updateDay(index, { title: e.target.value })
-                      }
-                      className="w-full rounded-sm border border-gray-300 px-3 py-2 text-sm"
-                      placeholder="Title"
-                    />
-                    <select
-                      value={day.locationId}
-                      onChange={(e) =>
-                        updateDay(index, {
-                          locationId: e.target.value,
-                          activityIds: [],
-                        })
-                      }
-                      className="w-full rounded-sm border border-gray-300 px-3 py-2 text-sm"
-                    >
-                      <option value="">Select location</option>
-                      {destinations.map((d) => (
-                        <option key={d.id} value={d.id}>
-                          {d.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-              </div>
-
-              {isEditing ? (
-                <button
-                  type="button"
-                  onClick={() => removeDay(index)}
-                  className="inline-flex items-center gap-2 text-xs font-medium text-white rounded-sm bg-red-500 py-2 px-3 hover:text-white/80"
-                >
-                  <Trash2 size={16} />
-                  Remove
-                </button>
-              ) : null}
-            </div>
-
-            {!isEditing ? (
-              <p className="mt-3 text-sm text-gray-700 leading-7">
-                {day.details}
-              </p>
-            ) : (
-              <textarea
-                value={day.details}
-                onChange={(e) => updateDay(index, { details: e.target.value })}
-                rows={3}
-                className="mt-3 w-full rounded-sm border border-gray-300 px-3 py-2 text-sm"
-                placeholder="Details"
-              />
-            )}
-
-            {isEditing ? (
-              <div className="mt-4">
-                <div className="text-xs font-semibold text-gray-600">
-                  Activities (add-ons)
-                </div>
-                <div className="mt-2 grid gap-2 sm:grid-cols-2">
-                  {activities
-                    .filter(
-                      (a) =>
-                        !day.locationId || a.destinationId === day.locationId,
-                    )
-                    .map((a) => {
-                      const checked = day.activityIds.includes(a.id);
-                      return (
-                        <label
-                          key={a.id}
-                          className="flex items-start gap-3 rounded-sm border border-gray-200 px-3 py-2 text-sm text-gray-700"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={checked}
-                            onChange={(e) => {
-                              const nextIds = e.target.checked
-                                ? [...day.activityIds, a.id]
-                                : day.activityIds.filter((id) => id !== a.id);
-                              updateDay(index, { activityIds: nextIds });
-                            }}
-                            className="mt-1"
-                          />
-                          <span className="min-w-0">
-                            <span className="block font-medium text-gray-900">
-                              {a.title}
-                            </span>
-                            <span className="block text-xs text-gray-600">
-                              ${a.price}/person
-                            </span>
-                          </span>
-                        </label>
-                      );
-                    })}
-                </div>
-              </div>
-            ) : null}
-          </div>
-        ))}
-      </div>
-
-      {isEditing ? (
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <button
-            type="button"
-            onClick={addDay}
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#223441] hover:underline"
-          >
-            <Plus size={16} />
-            Add day
-          </button>
-
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={saveEdits}
-              disabled={!isDirty}
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white transition disabled:opacity-50"
-              style={{
-                backgroundColor: "#223441",
-                borderRadius: "2px",
-                color: "#ffffff",
-              }}
-            >
-              Save edits
-            </button>
-            <button
-              type="button"
-              onClick={revertEdits}
-              disabled={!isDirty}
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium border border-gray-300 text-gray-900 hover:bg-gray-50 disabled:opacity-50"
-              style={{ borderRadius: "2px" }}
-            >
-              Revert changes
-            </button>
-          </div>
-        </div>
-      ) : null}
-
-      <p className="mt-4 text-xs text-gray-600">
-        Editing is for planning only. Paste your custom itinerary into booking
-        notes when you submit.
-      </p>
-    </div>
-  );
-}
-
 function ProductDetails() {
   const { slug } = useParams();
   const product = getProductBySlug(slug);
-  const [_plan, setPlan] = useState(null);
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -646,6 +313,17 @@ function ProductDetails() {
     );
   }
 
+  const activityOffers = Array.from(
+    new Set(
+      [
+        ...(Array.isArray(product.highlights) ? product.highlights : []),
+        ...(Array.isArray(product.includes) ? product.includes : []),
+      ]
+        .map((item) => String(item || "").trim())
+        .filter(Boolean),
+    ),
+  );
+
   const galleryImages = product.gallery?.length
     ? product.gallery
     : [product.imageUrl].filter(Boolean);
@@ -655,34 +333,53 @@ function ProductDetails() {
       <div className="mx-auto max-w-6xl px-6 py-3">
         <div className="grid gap-10 lg:grid-cols-[3fr_1.2fr]">
           <div>
+            {/* GALLERY */}
             <Gallery images={galleryImages} />
+            {/* TITLE */}
+            <h1 className="mt-6 text-2xl font-semibold tracking-wide text-gray-900">
+              {product.title}
+            </h1>
 
-            <h2 className="text-2xl mt-6 font-semibold">{product.title}</h2>
+            {/* QUICK INFO */}
+            <div className="mt-4 flex flex-wrap gap-2 text-xs text-gray-600">
+              {product.duration ? (
+                <div className="flex items-center gap-1 rounded-sm border border-gray-300 px-2 py-1">
+                  <Clock3 size={14} className="text-[#223441]" />
+                  <span>{product.duration}</span>
+                </div>
+              ) : null}
+
+              {product.groupSize ? (
+                <div className="flex items-center gap-1 rounded-sm border border-gray-300 px-2 py-1">
+                  <Users size={14} className="text-[#223441]" />
+                  <span>{product.groupSize}</span>
+                </div>
+              ) : null}
+
+              {product.destination ? (
+                <div className="flex items-center gap-1 rounded-sm border border-gray-300 px-2 py-1">
+                  <MapPin size={14} className="text-[#223441]" />
+                  <span>{product.destination}</span>
+                </div>
+              ) : null}
+
+              {product.activityType ? (
+                <div className="flex items-center gap-1 rounded-sm border border-gray-300 px-2 py-1">
+                  <Layers size={14} className="text-[#223441]" />
+                  <span>{product.activityType}</span>
+                </div>
+              ) : null}
+            </div>
+
             <ExpandableText
               text={product.longDescription}
               lines={4}
-              className="mt-3 text-sm text-gray-600"
+              className="mt-3 text-sm text-gray-900 leading-loose"
               moreLabel="Show more details"
               lessLabel="Show less"
             />
 
-            <div className="mt-5 text-2xl font-semibold text-gray-900">
-              ${product.priceFrom}{" "}
-              <span className="text-sm font-medium text-gray-600">
-                / {product.priceUnit}
-              </span>
-            </div>
-
             <div className="mt-8 grid gap-3 text-sm text-gray-700 sm:grid-cols-2">
-              {product.duration ? (
-                <div className="flex items-center gap-2">
-                  <Clock3 size={16} className="text-[#223441]" />
-                  <span className="font-semibold text-gray-900">
-                    Duration:
-                  </span>{" "}
-                  <span>{product.duration}</span>
-                </div>
-              ) : null}
               {product.route ? (
                 <div>
                   <span className="font-semibold text-gray-900">Route:</span>{" "}
@@ -705,7 +402,13 @@ function ProductDetails() {
               items={product.highlights}
               icon={Sparkles}
             />
-            <List title="Included" items={product.includes} icon={BadgeCheck} />
+
+            <List
+              title="What's Included"
+              items={product.includes}
+              icon={BadgeCheck}
+            />
+
             <List title="Not included" items={product.excludes} icon={BadgeX} />
 
             {product.whatToKnow?.length ? (
@@ -724,19 +427,13 @@ function ProductDetails() {
                 </ul>
               </div>
             ) : null}
-
-            {product.itineraryDays?.length ? (
-              <ItineraryEditor
-                itineraryDays={product.itineraryDays}
-                onChangePlan={setPlan}
-              />
-            ) : null}
           </div>
 
-          <aside className="h-fit rounded-sm border border-gray-300 bg-white p-6 lg:sticky lg:top-32">
-            <h1 className="text-2xl font-semibold">Request on WhatsApp</h1>
+          <aside className="h-fit rounded-sm shadow-xl bg-white p-6 lg:sticky lg:top-32">
+            <h1 className="text-xl font-semibold">Booking Enquiry</h1>
             <div className="text-sm text-gray-600">
-              We’ll confirm availability and send payment options.
+              Send your enquiry and we'll confirm availability and payment
+              options by email.
             </div>
 
             {/* BOOKING FORM */}
@@ -766,37 +463,41 @@ function ProductDetails() {
                     fullName: form.fullName,
                     email: form.email,
                   },
-                  paymentStatus: "WHATSAPP_PENDING",
+
+                  paymentStatus: "EMAIL_ENQUIRY_PENDING",
                 };
 
                 saveLastBooking(booking);
 
-                const text = [
-                  `🆕 New Booking Request`,
-                  `------------------------`,
+                const subject = `Booking Enquiry - ${product.title}`;
+
+                const body = [
+                  `Hello ${company.name},`,
+                  ``,
+                  `I would like to enquire about the following booking:`,
+                  ``,
                   `Product: ${product.title}`,
-
-                  form.startDate && form.endDate
-                    ? `Dates: ${form.startDate} → ${form.endDate}`
-                    : null,
-
+                  `Dates: ${form.startDate} -> ${form.endDate}`,
+                  ``,
                   `Passengers:`,
-                  form.adults ? `- Adults: ${form.adults}` : null,
-                  form.children ? `- Children: ${form.children}` : null,
-                  form.infants ? `- Infants: ${form.infants}` : null,
-
-                  `------------------------`,
-                  form.fullName ? `Name: ${form.fullName}` : null,
-                  form.email ? `Email: ${form.email}` : null,
-
-                  total > 0 ? `Estimated Total: $${total}` : null,
+                  `- Adults: ${form.adults}`,
+                  `- Children: ${form.children}`,
+                  `- Infants: ${form.infants}`,
+                  ``,
+                  `Customer Details:`,
+                  `Name: ${form.fullName}`,
+                  `Email: ${form.email}`,
+                  ``,
+                  `Estimated Total: $${total}`,
+                  ``,
+                  `Please confirm availability and payment options.`,
                 ]
                   .filter(Boolean)
                   .join("\n");
 
-                const whatsappLink = `${company.contact.whatsappLink}?text=${encodeURIComponent(text)}`;
+                const mailtoLink = `mailto:${company.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-                window.open(whatsappLink, "_blank");
+                window.location.href = mailtoLink;
               }}
               className="mt-4"
             >
@@ -946,7 +647,7 @@ function ProductDetails() {
                     borderRadius: "2px",
                   }}
                 >
-                  Send on WhatsApp
+                  Send Enquiry
                 </button>
               </div>
             </form>
