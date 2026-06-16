@@ -27,7 +27,7 @@ function List({ title, items, icon: Icon }) {
   return (
     <div className="mt-8">
       <h2 className="text-md font-semibold">{title}</h2>
-      <ul className="mt-4 grid gap-2 text-sm text-gray-700 sm:grid-cols-2">
+      <ul className="mt-4 space-y-3 text-sm text-gray-700">
         {items.map((item) => (
           <li key={item} className="flex gap-2">
             {Icon ? (
@@ -339,7 +339,6 @@ function ProductDetails() {
             <h1 className="mt-6 text-2xl font-semibold tracking-wide text-gray-900">
               {product.title}
             </h1>
-
             {/* QUICK INFO */}
             <div className="mt-4 flex flex-wrap gap-2 text-xs text-gray-600">
               {product.duration ? (
@@ -370,7 +369,6 @@ function ProductDetails() {
                 </div>
               ) : null}
             </div>
-
             <ExpandableText
               text={product.longDescription}
               lines={4}
@@ -378,7 +376,6 @@ function ProductDetails() {
               moreLabel="Show more details"
               lessLabel="Show less"
             />
-
             <div className="mt-8 grid gap-3 text-sm text-gray-700 sm:grid-cols-2">
               {product.route ? (
                 <div>
@@ -396,28 +393,33 @@ function ProductDetails() {
                 </div>
               ) : null}
             </div>
+            {/* HIGHLIGHTS */}
+            <List title="Highlights" items={product.highlights} />
 
-            <List
-              title="Highlights"
-              items={product.highlights}
-              icon={Sparkles}
-            />
+            {/* START TIMES */}
+            <List title="Start Times" items={product.startTimes} />
 
-            <List
-              title="What's Included"
-              items={product.includes}
-              icon={BadgeCheck}
-            />
+            {/* INCLUDED */}
+            <List title="Includes" items={product.includes} />
 
-            <List title="Not included" items={product.excludes} icon={BadgeX} />
+            {/* NOT INCLUDED */}
+            <List title="Not Included" items={product.excludes} />
 
+            {/* ACCESSIBILITY */}
+            <List title="Accessibility" items={product.accessibility} />
+
+            {/* WHAT TO BRING */}
+            <List title="What to Bring" items={product.whatToBring} />
+
+            {/* CANCELLATION */}
+            <List title="Cancellation" items={product.cancellation} />
             {product.whatToKnow?.length ? (
               <div className="mt-10 rounded-sm border border-gray-300 bg-white p-6">
                 <div className="flex items-center gap-2">
                   <Info size={18} className="text-[#223441]" />
                   <h2 className="text-md font-semibold">What to know</h2>
                 </div>
-                <ul className="mt-4 grid gap-2 text-sm text-gray-700 sm:grid-cols-2">
+                <ul className="mt-4 space-y-3 text-sm text-gray-700">
                   {product.whatToKnow.map((line) => (
                     <li key={line} className="flex gap-2">
                       <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#223441]" />

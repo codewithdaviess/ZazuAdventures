@@ -1,4 +1,10 @@
 import davies from "../assets/background.png";
+import vfgt1 from "../assets/vfgt1.jpg";
+import vfgt2 from "../assets/vfgt2.jpg";
+import vfgt3 from "../assets/vfgt3.jpg";
+import vfgt4 from "../assets/vfgt4.jpg";
+import vfgt5 from "../assets/vfgt5.jpg";
+import vfgt6 from "../assets/vfgt6.jpg";
 import heroImage from "../assets/background.png";
 import gallery2 from "../assets/background2.png";
 import gallery3 from "../assets/background3.png";
@@ -174,36 +180,89 @@ export const activities = [
 
     // GALLERY
     imageUrl: davies,
-    gallery: [heroImage, gallery2, contour],
+    gallery: [vfgt1, vfgt2, vfgt3, vfgt4, vfgt5, vfgt6],
 
     companyName: "Zazu Adventures",
 
     // HIGHLIGHTS
     highlights: [
-      "Guided rainforest walk",
-      "Breathtaking waterfall viewpoints",
-      "Professional local guide",
-      "Photography opportunities",
-      "Learn the history and geology of Victoria Falls",
-      "Experience the mist and thunder of the Falls",
+      "Walk through the rainforest with a knowledgeable local guide who shares the history, legends, and geology behind Victoria Falls.",
+
+      "Stop at several panoramic viewpoints where you can experience the full scale and power of the waterfall from different angles.",
+
+      "Feel the cool spray and hear the thunder of the Zambezi River as millions of litres of water plunge into the gorge below.",
+
+      "Learn about local wildlife, plant life, and the cultural importance of Victoria Falls to nearby communities.",
+
+      "Capture incredible photographs of one of the Seven Natural Wonders of the World during the best viewing opportunities along the trail.",
+
+      "Enjoy a relaxed walking experience suitable for couples, solo travellers, families, and nature lovers visiting Victoria Falls.",
     ],
 
     // FULL DESCRIPTION
     longDescription:
       "Experience the awe-inspiring beauty of Victoria Falls on a guided walking tour designed to immerse you in the wonder, power, and history of Africa’s most iconic waterfall.\n\nFollow scenic rainforest trails with an experienced local guide who brings the Falls to life through fascinating stories, historical insights, and knowledge of the region’s unique geology and wildlife.\n\nAs the thunder of cascading water echoes around you, stop at spectacular viewpoints offering unforgettable panoramic views and incredible photography moments. Feel the refreshing mist on your skin and witness the dramatic landscapes carved by the mighty Zambezi River.\n\nWhether you are visiting for the first time or returning to experience its beauty again, this tour offers the perfect balance of adventure, discovery, and unforgettable scenery for couples, families, solo travellers, and nature lovers.",
 
-    // INCLUDED / EXCLUDED
-    includes: [
-      "Professional local guide",
-      "Guided rainforest tour",
-      "Photo stops at major viewpoints",
+    // START TIMES
+    startTimes: [
+      "08:00 AM – Morning guided tour with cooler temperatures and lighter crowds.",
+
+      "10:00 AM – Mid-morning departure offering excellent visibility and vibrant rainforest scenery.",
+
+      "02:00 PM – Afternoon experience with dramatic mist, sunlight, and great photography conditions.",
     ],
 
+    // INCLUDED
+    includes: [
+      "Return hotel transfers within Victoria Falls town.",
+
+      "Professional English-speaking local guide with knowledge of the Falls and surrounding rainforest.",
+
+      "Bottled drinking water during the tour.",
+
+      "Raincoats provided during high-water season when the spray from the Falls is strongest.",
+    ],
+
+    // NOT INCLUDED
     excludes: [
-      "Victoria Falls National Park entry fees",
-      "Transfers",
-      "Meals and drinks",
-      "Personal expenses",
+      "Victoria Falls National Park entrance fees.",
+
+      "Guide gratuities and optional tips.",
+
+      "Personal purchases, snacks, and additional refreshments.",
+    ],
+
+    // ACCESSIBILITY
+    accessibility: [
+      "The tour follows established rainforest walking paths with regular stops along the route.",
+
+      "Suitable for most fitness levels, although some areas may become slippery during high-water season.",
+
+      "Children are welcome when accompanied by an adult.",
+
+      "Certain sections may be challenging for wheelchairs due to uneven natural pathways.",
+    ],
+
+    // WHAT TO BRING
+    whatToBring: [
+      "Comfortable walking shoes with good grip for rainforest trails.",
+
+      "A waterproof jacket or extra clothing during the rainy season.",
+
+      "Camera or smartphone for photography at the viewpoints.",
+
+      "Passport or identification if required for park entry.",
+
+      "Sunscreen, sunglasses, and a hat during warmer months.",
+    ],
+
+    // CANCELLATION
+    cancellation: [
+      "Free cancellation available up to 24 hours before the scheduled departure time.",
+
+      "Cancellations made within 24 hours of departure may not qualify for a refund.",
+
+      "In cases of severe weather or safety concerns, tours may be rescheduled depending on availability.",
     ],
 
     // ITINERARY

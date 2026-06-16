@@ -1614,6 +1614,7 @@ __metadata:
     react-date-range: "npm:^2.0.1"
     react-dom: "npm:^19.2.0"
     react-router-dom: "npm:^7.10.1"
+    swiper: "npm:^12.2.0"
     tailwindcss: "npm:^4.1.18"
     vite: "npm:^7.2.4"
   languageName: unknown
@@ -2860,6 +2861,13 @@ __metadata:
   dependencies:
     has-flag: "npm:^4.0.0"
   checksum: 10c0/afb4c88521b8b136b5f5f95160c98dee7243dc79d5432db7efc27efb219385bbc7d9427398e43dd6cc730a0f87d5085ce1652af7efbe391327bc0a7d0f7fc124
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^12.2.0":
+  version: 12.2.0
+  resolution: "swiper@npm:12.2.0"
+  checksum: 10c0/459c9621e170130c0a6874b05e24fefd0411529600a17b2d8afc4987dc2e803ab18d42983081b723423819d464568fdb541b6c3f517e558c60888c644dc4ead1
   languageName: node
   linkType: hard
 

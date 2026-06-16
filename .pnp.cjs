@@ -47,6 +47,7 @@ const RAW_RUNTIME_STATE =
           ["react-date-range", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:2.0.1"],\
           ["react-dom", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:19.2.3"],\
           ["react-router-dom", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:7.10.1"],\
+          ["swiper", "npm:12.2.0"],\
           ["tailwindcss", "npm:4.1.18"],\
           ["vite", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:7.2.7"]\
         ],\
@@ -1971,6 +1972,7 @@ const RAW_RUNTIME_STATE =
           ["react-date-range", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:2.0.1"],\
           ["react-dom", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:19.2.3"],\
           ["react-router-dom", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:7.10.1"],\
+          ["swiper", "npm:12.2.0"],\
           ["tailwindcss", "npm:4.1.18"],\
           ["vite", "virtual:751840211a7d50a7c9063a2ed1be6bd6804c236f9f152146e2fa5f98710a9edd51c683faedcdfec799665d1297f4cbdaef38db44014a4baf4104549b690b1a11#npm:7.2.7"]\
         ],\
@@ -3415,6 +3417,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["has-flag", "npm:4.0.0"],\
           ["supports-color", "npm:7.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["swiper", [\
+      ["npm:12.2.0", {\
+        "packageLocation": "../../../../Users/davie/AppData/Local/Yarn/Berry/cache/swiper-npm-12.2.0-55f453c369-10c0.zip/node_modules/swiper/",\
+        "packageDependencies": [\
+          ["swiper", "npm:12.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
