@@ -38,7 +38,7 @@ function Services() {
   return (
     <Layout>
       <div className="mx-auto max-w-6xl px-6 py-12">
-        <h1 className="text-3xl font-semibold">Services</h1>
+        <h1 className="text-3xl font-semibold">What We Offer</h1>
         <p className="mt-3 text-sm text-gray-600">{company.summary}</p>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-3">

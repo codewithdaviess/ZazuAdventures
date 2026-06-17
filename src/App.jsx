@@ -6,9 +6,6 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 
-import Destinations from "./pages/Destinations";
-import DestinationDetail from "./pages/DestinationDetail";
-
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import Book from "./pages/Book";
@@ -20,10 +17,6 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-
-        {/* DESTINATIONS */}
-        <Route path="/destinations" element={<Destinations />} />
-        <Route path="/destinations/:slug" element={<DestinationDetail />} />
 
         {/* PRODUCTS */}
         <Route path="/products" element={<Products />} />

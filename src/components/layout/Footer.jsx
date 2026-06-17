@@ -1,6 +1,4 @@
 import React from "react";
-import { ArrowUpRight, Mail, MapPinned, Phone } from "lucide-react";
-import logo from "../../assets/zazulogo.png";
 
 const FacebookIcon = ({ className = "" }) => (
   <svg
@@ -63,31 +61,6 @@ const WhatsAppIcon = ({ className = "" }) => (
   </svg>
 );
 
-const footerLinks = [
-  { label: "Home", href: "/" },
-  { label: "Explore", href: "/products" },
-  { label: "Destinations", href: "/destinations" },
-  { label: "Contact Us", href: "/contact" },
-];
-
-const destinations = [
-  "Victoria Falls",
-  "Hwange",
-  "Livingstone",
-  "South Luangwa",
-  "Chobe",
-  "Cape Town",
-];
-
-const tripPlanning = [
-  "Visa & Entry Info",
-  "Best Time to Visit",
-  "Travel Tips",
-  "Health & Safety",
-  "Airport Transfers",
-  "Custom Itineraries",
-];
-
 const socialLinks = [
   { label: "WhatsApp", Icon: WhatsAppIcon, href: "https://wa.me/263775179744" },
   {
@@ -112,97 +85,13 @@ const socialLinks = [
   },
 ];
 
-const footerLinkClass =
-  "text-sm text-[#3c4345] transition hover:text-[#223441] hover:underline hover:underline-offset-4";
-
 function Footer() {
   return (
-    <footer id="contact" className="bg-[#f1f3f5] text-[#161b1d]">
-      <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid gap-10 border-b border-black/10 pb-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-          <div className="max-w-sm">
-            <img src={logo} alt="Asambe Logo" className="h-14 w-auto" />
-            <p className="mt-5 text-sm leading-7 text-[#3c4345]">
-              Zazu Adventures curates day tours, destination escapes, and
-              practical travel support across Zimbabwe, Zambia, and the wider
-              region.
-            </p>
-
-            <a
-              href="/contact"
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
-              style={{
-                backgroundColor: "#223441",
-                borderRadius: "2px",
-                color: "#ffffff",
-              }}
-            >
-              <span>Contact Us</span>
-              <ArrowUpRight size={16} />
-            </a>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-[#161b1d]">
-              Quick Links
-            </h3>
-            <div className="mt-5 flex flex-col gap-3">
-              {footerLinks.map((link) => (
-                <a key={link.label} href={link.href} className={footerLinkClass}>
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-[#161b1d]">
-              Destinations
-            </h3>
-            <div className="mt-5 flex flex-col gap-3">
-              {destinations.map((item) => (
-                <span key={item} className="text-sm text-[#3c4345]">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-[#161b1d]">
-              Plan Your Trip
-            </h3>
-            <div className="mt-5 flex flex-col gap-4">
-              <div className="space-y-3">
-                {tripPlanning.map((item) => (
-                  <p key={item} className="text-sm text-[#3c4345]">
-                    {item}
-                  </p>
-                ))}
-              </div>
-
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 text-sm text-[#3c4345]">
-                  <Phone size={16} className="mt-0.5 shrink-0" />
-                  <span>+263 77 517 9744</span>
-                </div>
-                <div className="flex items-start gap-3 text-sm text-[#3c4345]">
-                  <Mail size={16} className="mt-0.5 shrink-0" />
-                  <span>info@zazuadventures.com</span>
-                </div>
-                <div className="flex items-start gap-3 text-sm text-[#3c4345]">
-                  <MapPinned size={16} className="mt-0.5 shrink-0" />
-                  <span>Victoria Falls, Zimbabwe</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-6 pt-8 md:flex-row md:items-center md:justify-between">
+    <footer className="bg-[#f1f3f5] text-[#161b1d]">
+      <div className="mx-auto max-w-6xl px-6 py-6">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-[#4f5658]">
-            {"\u00A9"} 2026 Zazu Adventures. Crafted for regional tours,
-            safaris, and travel planning.
+            © 2026 codewithdavies.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">

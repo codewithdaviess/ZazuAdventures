@@ -7,7 +7,6 @@ React + Vite application for the Zazu Adventures travel website.
 This app powers the public-facing website and includes sections such as:
 
 - homepage hero content
-- destination listings
 - testimonials sourced from WordPress
 - reusable UI sections and utilities
 

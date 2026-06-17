@@ -5,7 +5,7 @@ import zazuLogo from "../../assets/zazulogo.png";
 
 function Navbar() {
   const navLinks = [
-    { name: "Destinations", to: "/destinations", type: "link" },
+    { name: "What We Offer", to: "/products", type: "link" },
     {
       name: "Explore",
       type: "dropdown",
