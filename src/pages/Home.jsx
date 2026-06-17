@@ -4,6 +4,7 @@ import Hero from "../components/homepage/Hero";
 import WhatWeOffer from "../components/homepage/WhatWeOffer";
 import Welcome from "../components/homepage/Welcome";
 import Activities from "../components/homepage/Activities";
+import Packages from "../components/homepage/Packages";
 import FAQs from "../components/homepage/FAQs";
 import Testimonials from "../components/homepage/Testimonials";
 
@@ -13,6 +14,7 @@ function Home() {
       <Hero />
       <WhatWeOffer />
       <Activities />
+      <Packages />
       <Testimonials />
     </Layout>
   );

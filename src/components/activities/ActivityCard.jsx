@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Clock3 } from "lucide-react";
-import RatingDots from "../shared/RatingDots";
 
 function ActivityCard({ activity }) {
+  const price = activity?.priceFrom ?? activity?.price ?? null;
+  const description = activity?.description || activity?.shortDescription;
+  const showDuration = Boolean(activity?.duration);
+
   return (
     <Link
       to={`/products/${activity.slug}`}
@@ -11,9 +14,9 @@ function ActivityCard({ activity }) {
     >
       {/* Price Badge */}
       <div className="absolute top-6 -left-2 z-20 bg-[#223441] px-4 py-2 shadow-lg rounded-t-sm rounded-br-sm">
-        <span className="font-semibold text-lg text-white">
-          ${activity.price}
-        </span>
+        {price != null ? (
+          <span className="font-semibold text-lg text-white">${price}</span>
+        ) : null}
 
         {/* Ribbon Tail */}
         <div className="absolute -bottom-2 left-0 w-0 h-0 border-l-[8px] border-l-transparent border-t-[8px] border-t-[#223441]" />
@@ -35,20 +38,24 @@ function ActivityCard({ activity }) {
       <div className="px-4 py-4 flex flex-col flex-1">
         <h3 className="text-md font-bold text-dark mb-2">{activity.title}</h3>
 
-        {activity.description && (
+        {description && (
           <p className="text-gray-600 text-sm leading-relaxed mb-6">
-            {activity.description}
+            {description}
           </p>
         )}
 
-        <div className="border-t border-gray-300 pt-4 mt-auto">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-gray-600">
-              <Clock3 size={16} />
-              <span className="text-xs">{activity.duration}</span>
+        {showDuration ? (
+          <div className="border-t border-gray-300 pt-4 mt-auto">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-gray-600">
+                <Clock3 size={16} />
+                <span className="text-xs">{activity.duration}</span>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="mt-auto" />
+        )}
       </div>
     </Link>
   );

@@ -4,6 +4,7 @@ import ActivityCard from "./ActivityCard";
 function ActivitiesSection({
   id = "activities",
   title = "Available Activities",
+  heading = "Experiences for Every Type of Traveller",
   subtitle = "Discover exciting adventures, wildlife encounters, cultural experiences, and unforgettable moments during your stay in Victoria Falls.",
   items = [],
   sectionClassName = "py-16",
@@ -20,9 +21,7 @@ function ActivitiesSection({
             {title}
           </span>
 
-          <h2 className="mt-2 text-xl  font-semibold text-dark">
-            Experiences for Every Type of Traveller
-          </h2>
+          <h2 className="mt-2 text-xl font-semibold text-dark">{heading}</h2>
 
           {subtitle && (
             <p className="mt-4 text-gray-600 leading-relaxed max-w-xl mx-auto">
