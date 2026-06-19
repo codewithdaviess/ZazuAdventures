@@ -61,6 +61,261 @@ export const commonPolicies = {
     "Passport/ID, comfortable shoes, sun protection, and a light rain jacket during high-water months at Victoria Falls.",
 };
 
+const guidedWalkingInfo = {
+  startTimes: [
+    "08:00 AM - Cooler temperatures and lighter crowds",
+    "10:00 AM - Bright mid-morning visibility",
+    "02:00 PM - Strong spray and dramatic light",
+  ],
+  includes: [
+    "Professional English-speaking guide",
+    "Bottled water during the tour",
+    "Raincoat during high-water season",
+    "Hotel transfer within Victoria Falls town",
+  ],
+  excludes: [
+    "Victoria Falls National Park entry fees",
+    "Guide gratuities",
+    "Personal snacks and drinks",
+  ],
+  accessibility: [
+    "Established walking paths with regular stops",
+    "Suitable for most fitness levels",
+    "Children are welcome with an adult",
+    "Some sections may be slippery in peak spray season",
+  ],
+  whatToBring: [
+    "Comfortable walking shoes",
+    "Waterproof jacket or light poncho",
+    "Camera or phone for photos",
+    "Passport or ID for park entry if needed",
+    "Sunscreen, sunglasses, and a hat",
+  ],
+  cancellation: [
+    "Free cancellation up to 24 hours before departure",
+    "Late cancellations may not qualify for a refund",
+    "Severe weather may trigger a reschedule",
+  ],
+};
+
+const culturalTourInfo = {
+  startTimes: [
+    "09:00 AM - Best for a relaxed morning visit",
+    "12:00 PM - Midday departure with flexible pacing",
+    "03:00 PM - Cooler late-afternoon option",
+  ],
+  includes: [
+    "Local cultural guide",
+    "Village visit and storytelling",
+    "Community interaction",
+    "Bottled water during the visit",
+  ],
+  excludes: [
+    "Personal tips and gratuities",
+    "Optional craft purchases",
+    "Special donations unless arranged",
+  ],
+  accessibility: [
+    "Mostly level walking through village paths",
+    "Suitable for most travellers",
+    "Children are welcome with an adult",
+    "Some homes and paths may be uneven or sandy",
+  ],
+  whatToBring: [
+    "Comfortable clothes",
+    "Closed shoes or sandals with support",
+    "Water bottle",
+    "Respectful clothing for cultural visits",
+  ],
+  cancellation: [
+    "Free cancellation up to 24 hours before departure",
+    "Community events may require a new date",
+    "Weather or local ceremonies can affect timing",
+  ],
+};
+
+const adventureInfo = {
+  startTimes: [
+    "07:00 AM - Best conditions for early departures",
+    "09:00 AM - Popular mid-morning slot",
+    "01:00 PM - Afternoon departure when available",
+  ],
+  includes: [
+    "Professional safety briefing",
+    "Guide supervision throughout the activity",
+    "Required safety gear or harnessing",
+    "Bottled water or refreshments where applicable",
+  ],
+  excludes: [
+    "Park, bridge, or activity fees if charged separately",
+    "Gratuities",
+    "Personal photos or optional media packages",
+  ],
+  accessibility: [
+    "Best for travellers comfortable with active adventure",
+    "May involve steps, ladders, or uneven ground",
+    "Weight, age, or height limits may apply",
+    "Weather and water levels can affect participation",
+  ],
+  whatToBring: [
+    "Comfortable activewear",
+    "Closed shoes where required",
+    "Photo ID if requested by the operator",
+    "Secure place for valuables",
+  ],
+  cancellation: [
+    "Free cancellation up to 24 hours before departure",
+    "Operator safety rules may lead to rescheduling",
+    "Weather and river levels can affect access",
+  ],
+};
+
+const scenicFlightInfo = {
+  startTimes: [
+    "08:00 AM - Clear early light and calmer winds",
+    "10:30 AM - Great visibility over the Falls",
+    "03:00 PM - Warmer light and dramatic shadows",
+  ],
+  includes: [
+    "Pilot commentary",
+    "Helicopter seat",
+    "Safety briefing before departure",
+    "Airport or heliport coordination",
+  ],
+  excludes: [
+    "Airport taxes or heliport fees if charged separately",
+    "Gratuities",
+    "Optional photo or video packages",
+  ],
+  accessibility: [
+    "Suitable for most travellers",
+    "Boarding may require a small step into the aircraft",
+    "Weight limits may apply per seat or aircraft",
+    "Flights depend on weather and visibility",
+  ],
+  whatToBring: [
+    "Camera or phone",
+    "Sunglasses",
+    "Light jacket",
+    "Photo ID if required",
+  ],
+  cancellation: [
+    "Free cancellation up to 24 hours before departure",
+    "Flights can be delayed or rescheduled for weather",
+    "Visibility conditions may affect flight routes",
+  ],
+};
+
+const raftingInfo = {
+  startTimes: [
+    "07:30 AM - Cooler start for the morning run",
+    "09:00 AM - Standard departure for most days",
+    "11:00 AM - Later start when river conditions allow",
+  ],
+  includes: [
+    "Certified river guides",
+    "Safety briefing and river equipment",
+    "Life jacket and paddle",
+    "Support team coordination",
+  ],
+  excludes: [
+    "Park fees",
+    "Transport if not arranged",
+    "Photos and video packages",
+  ],
+  accessibility: [
+    "Requires a reasonable level of fitness and mobility",
+    "Guests should be comfortable in moving water",
+    "Not suitable for all ages or medical conditions",
+    "Route may change with river conditions",
+  ],
+  whatToBring: [
+    "Quick-dry clothes",
+    "Closed shoes",
+    "Change of clothes",
+    "Dry bag for anything left behind",
+  ],
+  cancellation: [
+    "Free cancellation up to 24 hours before departure",
+    "River conditions can affect the route or start time",
+    "Safety decisions remain with the river guide team",
+  ],
+};
+
+const transferInfo = {
+  startTimes: [
+    "On request - Coordinated with your flight or hotel schedule",
+    "Early morning - Ideal for departures",
+    "Late afternoon - Useful for arrivals and hotel check-ins",
+  ],
+  includes: [
+    "Private vehicle",
+    "Professional driver",
+    "Luggage assistance",
+    "Door-to-door pickup within the booked area",
+  ],
+  excludes: [
+    "Tips",
+    "Extra waiting time unless arranged",
+    "Special baggage handling fees if applicable",
+  ],
+  accessibility: [
+    "Suitable for most travellers",
+    "Easy hotel and airport pickup coordination",
+    "Vehicle access may depend on road conditions",
+    "Advance notice helps for special luggage needs",
+  ],
+  whatToBring: [
+    "Flight details",
+    "Phone contact",
+    "Booking reference",
+    "Passport or ID for airport check-in if needed",
+  ],
+  cancellation: [
+    "Free cancellation up to 24 hours before pickup",
+    "Late changes may depend on driver availability",
+    "Flight delays should be shared as soon as possible",
+  ],
+};
+
+const packageInfo = {
+  startTimes: [
+    "08:00 AM - Early start for the full-day program",
+    "10:00 AM - Mid-morning start for selected combinations",
+    "Flexible - Coordinated around the included activities",
+  ],
+  includes: [
+    "All activities listed in the package",
+    "Coordination between operators",
+    "Bottled water during scheduled touring",
+    "Support with timing and pickup planning",
+  ],
+  excludes: [
+    "Accommodation unless stated",
+    "Park fees and attraction entry fees unless stated",
+    "Gratuities",
+    "Personal extras, drinks, and optional add-ons",
+  ],
+  accessibility: [
+    "Best for travellers comfortable with a full day out",
+    "Some activities may include stairs, walking, or transfers",
+    "Timing can shift slightly between operators",
+    "Specific activity limits still apply to each included component",
+  ],
+  whatToBring: [
+    "Passport or ID",
+    "Comfortable clothes",
+    "Camera",
+    "Sun protection",
+    "Cash or card for extras",
+  ],
+  cancellation: [
+    "Free cancellation up to 24 hours before the first activity",
+    "Package changes may depend on partner availability",
+    "Weather or operator issues may require a reschedule",
+  ],
+};
+
 /* =========================
    DESTINATIONS
 ========================= */
@@ -143,6 +398,7 @@ export const activities = [
     type: "tour",
     category: "Guided Tours",
     title: "Guided Tour of Victoria Falls",
+    ...guidedWalkingInfo,
     duration: "2 Hours",
     groupSize: "1-50 People",
     activityType: "Guided Walking Tour",
@@ -223,6 +479,7 @@ export const activities = [
     type: "tour",
     category: "Guided Tours",
     title: "Victoria Falls Bridge Tour",
+    ...guidedWalkingInfo,
     duration: "2 Hours",
     groupSize: "1-20 People",
     activityType: "Guided Heritage Walk",
@@ -266,6 +523,7 @@ export const activities = [
     type: "tour",
     category: "Cultural Tours",
     title: "Village Cultural Tour",
+    ...culturalTourInfo,
     duration: "3 Hours",
     groupSize: "1-15 People",
     activityType: "Cultural Visit",
@@ -305,6 +563,7 @@ export const activities = [
     type: "activity",
     category: "Adventure Activities",
     title: "Devils Pool Experience",
+    ...adventureInfo,
     duration: "2-3 Hours",
     groupSize: "2-12 People",
     activityType: "Seasonal Adventure",
@@ -349,6 +608,7 @@ export const activities = [
     type: "activity",
     category: "Adventure Activities",
     title: "17 Min Helicopter Flight",
+    ...scenicFlightInfo,
     duration: "17 Minutes",
     groupSize: "1-3 People",
     activityType: "Scenic Flight",
@@ -388,6 +648,7 @@ export const activities = [
     type: "activity",
     category: "Adventure Activities",
     title: "25 Min Helicopter Flight",
+    ...scenicFlightInfo,
     duration: "25 Minutes",
     groupSize: "1-3 People",
     activityType: "Scenic Flight",
@@ -427,6 +688,7 @@ export const activities = [
     type: "activity",
     category: "Adventure Activities",
     title: "Half Day White Water Rafting",
+    ...raftingInfo,
     duration: "Half Day",
     groupSize: "4-16 People",
     activityType: "River Adventure",
@@ -466,6 +728,7 @@ export const activities = [
     type: "activity",
     category: "Adventure Activities",
     title: "Full Day White Water Rafting",
+    ...raftingInfo,
     duration: "Full Day",
     groupSize: "4-16 People",
     activityType: "River Adventure",
@@ -505,6 +768,7 @@ export const activities = [
     type: "activity",
     category: "Adventure Activities",
     title: "Bridge Swing",
+    ...adventureInfo,
     duration: "1 Hour",
     groupSize: "1-12 People",
     activityType: "Adrenaline Activity",
@@ -544,6 +808,7 @@ export const activities = [
     type: "activity",
     category: "Adventure Activities",
     title: "Bungee Jumping",
+    ...adventureInfo,
     duration: "1 Hour",
     groupSize: "1-8 People",
     activityType: "Adrenaline Jump",
@@ -583,6 +848,7 @@ export const activities = [
     type: "transfer",
     category: "Airport Transfers",
     title: "Airport Transfers",
+    ...transferInfo,
     duration: "1 Hour",
     groupSize: "1-7 People",
     activityType: "Private Transfer",
@@ -628,6 +894,7 @@ export const packages = [
     type: "package",
     category: "Packages",
     title: "Falls Tour + Lunch + Sunset Cruise",
+    ...packageInfo,
     description:
       "Guided tour of Victoria Falls with lunch at Lookout Cafe and a sunset cruise.",
     shortDescription: "Falls tour, lunch, and sunset cruise combo.",
@@ -649,6 +916,7 @@ export const packages = [
     type: "package",
     category: "Packages",
     title: "Zim/Zam Falls Tour + Livingstone City Tour + Museum",
+    ...packageInfo,
     description:
       "Guided Falls tours on both the Zimbabwe and Zambia sides with a Livingstone city tour and museum visit.",
     shortDescription: "Cross-border Falls and city tour experience.",
@@ -670,6 +938,7 @@ export const packages = [
     type: "package",
     category: "Packages",
     title: "AM Safari + Helicopter Flight + Boma Dinner",
+    ...packageInfo,
     description:
       "Morning safari, scenic helicopter flight, and an evening at The Boma with dinner and drum show.",
     shortDescription: "Safari, helicopter, and Boma dinner combo.",
@@ -691,6 +960,7 @@ export const packages = [
     type: "package",
     category: "Packages",
     title: "AM Bamba Tram + Falls Tour + Boma",
+    ...packageInfo,
     description:
       "Ride the Bamba Tram, enjoy a guided tour of the Falls, and finish with The Boma experience.",
     shortDescription: "Tram, Falls tour, and Boma dinner package.",
@@ -712,6 +982,7 @@ export const packages = [
     type: "package",
     category: "Packages",
     title: "Lion/Elephant Walk + Helicopter Flight + Sunset Cruise",
+    ...packageInfo,
     description:
       "A wildlife walk experience paired with a helicopter flight and a sunset cruise.",
     shortDescription: "Wildlife walk, flight, and sunset cruise combo.",
@@ -733,6 +1004,7 @@ export const packages = [
     type: "package",
     category: "Packages",
     title: "Early Morning Falls Tour + Heli + Boma Dinner",
+    ...packageInfo,
     description:
       "An early guided tour of the Falls, a helicopter flight, and dinner with drum show at The Boma.",
     shortDescription: "Early tour, helicopter, and Boma dinner combo.",
@@ -754,6 +1026,7 @@ export const packages = [
     type: "package",
     category: "Packages",
     title: "AM Safari + Lion/Cheetah Walk + Dinner Cruise",
+    ...packageInfo,
     description:
       "Morning safari, lion or cheetah walk, and an evening dinner cruise on the Zambezi.",
     shortDescription: "Safari, predator walk, and dinner cruise combo.",
@@ -840,6 +1113,7 @@ export const catalog = {
       type: "tour",
       category: "Guided Tours",
       title: "Guided Tour of Victoria Falls",
+      ...guidedWalkingInfo,
       shortDescription:
         "Explore Victoria Falls with a professional local guide.",
       longDescription:
@@ -873,6 +1147,7 @@ export const catalog = {
       type: "package",
       category: "Victoria Falls Packages",
       title: "Victoria Falls 3 Day Classic",
+      ...packageInfo,
       shortDescription: "A balanced short break with tours and sunset cruise.",
       longDescription:
         "A clean itinerary combining transfers, Falls tour, and cruise experiences.",
