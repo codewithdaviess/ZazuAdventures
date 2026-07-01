@@ -5,6 +5,7 @@ import Layout from "../components/layout/Layout";
 import { getProductBySlug } from "../data/content";
 import ExpandableText from "../components/shared/ExpandableText";
 import { Clock3, Info, Layers, MapPin } from "lucide-react";
+import { getProductGallery } from "../lib/productMedia";
 
 function List({ title, items, icon: Icon }) {
   if (!items?.length) return null;
@@ -87,9 +88,7 @@ function ProductDetails() {
     );
   }
 
-  const galleryImages = product.gallery?.length
-    ? product.gallery
-    : [product.imageUrl].filter(Boolean);
+  const galleryImages = getProductGallery(product);
 
   useEffect(() => {
     setGalleryIndex(0);

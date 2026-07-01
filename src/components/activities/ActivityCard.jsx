@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Clock3 } from "lucide-react";
 import { getTripLabel } from "../../lib/tripLabel";
+import { getProductCoverImage } from "../../lib/productMedia";
 
 function ActivityCard({ activity }) {
   const price = activity?.priceFrom ?? activity?.price ?? null;
@@ -27,7 +28,7 @@ function ActivityCard({ activity }) {
       <div className="overflow-hidden rounded-t-sm">
         <div className="w-full h-60 overflow-hidden rounded-t-sm">
           <img
-            src={activity.imageUrl}
+            src={getProductCoverImage(activity)}
             alt={activity.title}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -37,11 +38,13 @@ function ActivityCard({ activity }) {
 
       {/* Content */}
       <div className="px-4 py-4 flex flex-col flex-1">
-        <h3 className="text-md font-bold text-dark mb-2">{activity.title}</h3>
+        <h3 className="text-md font-bold text-dark mb-2 line-clamp-2">
+          {activity.title}
+        </h3>
 
         {tripLabel && (
-          <div className="mb-6">
-            <span className="inline-flex rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-700">
+          <div className="mb-2">
+            <span className="inline-flex rounded-full py-1 text-xs font-regular uppercase tracking-wide text-gray-700">
               {tripLabel}
             </span>
           </div>

@@ -1,19 +1,18 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 import Hero from "../components/homepage/Hero";
-import WhatWeOffer from "../components/homepage/WhatWeOffer";
-import Welcome from "../components/homepage/Welcome";
-import Activities from "../components/homepage/Activities";
 import Packages from "../components/homepage/Packages";
-import FAQs from "../components/homepage/FAQs";
+import MultiDayPackages from "../components/homepage/MultiDayPackages";
+import AboutUs from "../components/about/AboutUs";
 import Testimonials from "../components/homepage/Testimonials";
 
 function Home() {
   return (
     <Layout withNavbarOffset={false}>
       <Hero />
-      <WhatWeOffer />
       <Packages />
+      <MultiDayPackages />
+      <AboutUs />
       <Testimonials />
     </Layout>
   );

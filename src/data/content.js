@@ -1,13 +1,13 @@
-﻿import davies from "../assets/background.png";
+import davies from "../assets/victoriafalls.jpg";
 import vfgt1 from "../assets/vfgt1.jpg";
 import vfgt2 from "../assets/vfgt2.jpg";
 import vfgt3 from "../assets/vfgt3.jpg";
 import vfgt4 from "../assets/vfgt4.jpg";
 import vfgt5 from "../assets/vfgt5.jpg";
 import vfgt6 from "../assets/vfgt6.jpg";
-import heroImage from "../assets/background.png";
-import gallery2 from "../assets/background2.png";
-import gallery3 from "../assets/background3.png";
+import heroImage from "../assets/victoriafalls.jpg";
+import gallery2 from "../assets/BoatCruise.jpg";
+import gallery3 from "../assets/Helicopter.jpg";
 import contour from "../assets/contourbg.png";
 
 /* =========================
@@ -327,7 +327,7 @@ export const destinations = [
     country: "Zimbabwe",
     description:
       "Iconic waterfall adventures, rainforest walks, helicopter flights, and sunset cruises on the Zambezi.",
-    bestTimeToVisit: "High water: Marchâ€“May. Lower water: Augustâ€“December.",
+    bestTimeToVisit: "High water: March–May. Lower water: August–December.",
     size: "small",
     imageUrl: gallery2,
   },
@@ -1224,5 +1224,6 @@ export function getRelatedProducts(destinationId, currentSlug) {
       product.destinations?.includes(destinationId),
   );
 }
+
 
 

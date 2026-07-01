@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Clock3 } from "lucide-react";
 import { getTripLabel } from "../../lib/tripLabel";
+import { getProductCoverImage } from "../../lib/productMedia";
 
 function ProductCard({ product }) {
   const price =
@@ -27,7 +28,7 @@ function ProductCard({ product }) {
       <div className="overflow-hidden rounded-t-sm">
         <div className="w-full h-60 overflow-hidden rounded-t-sm">
           <img
-            src={product.imageUrl}
+            src={getProductCoverImage(product)}
             alt={product.title}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"

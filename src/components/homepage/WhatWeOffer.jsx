@@ -1,47 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  catalog,
-  packages,
-  activities,
-  destinations,
-} from "../../data/content";
+import { getOfferImage } from "../../lib/productMedia";
 
 const offerings = [
   {
     title: "Victoria Falls",
     description:
-      "Game drives around Victoria Falls and Zambezi National Park with Big Five wildlife viewing.",
-    count: activities?.length ?? 0,
+      "Guided waterfall viewpoints, rainforest walks, and the region's signature views.",
     to: "/experiences/victoria-falls",
-    image: destinations[2]?.imageUrl,
+    image: getOfferImage("Victoria Falls"),
     span: "col-span-1 lg:col-span-1",
   },
   {
     title: "Helicopter Flights",
     description:
-      "World-class Zambezi River rafting through the Batoka Gorge below Victoria Falls.",
-    count: activities?.length ?? 0,
+      "Scenic flights over the Falls and the Zambezi gorge with sweeping aerial views.",
     to: "/experiences/flight-of-the-angels",
-    image: destinations[3]?.imageUrl,
+    image: getOfferImage("Helicopter Flights"),
     span: "col-span-1 lg:col-span-1",
   },
   {
     title: "Zambezi River Cruise",
     description:
-      "Sunset cruises on the Zambezi River with wildlife viewing and scenic Victoria Falls views.",
-    count: packages?.length ?? 0,
+      "Relaxed sunset cruising on the Zambezi with wildlife and riverbank scenery.",
     to: "/experiences/zambezi-river-cruise",
-    image: destinations[4]?.imageUrl,
+    image: getOfferImage("Zambezi River Cruise"),
     span: "col-span-1 lg:col-span-1",
   },
   {
     title: "Boma Dinner Show",
     description:
-      "Experience Victoria Falls wildlife up close with guided elephant encounters in the Zambezi.",
-    count: catalog.tours?.length ?? 0,
+      "An evening of food, drumming, and lively local entertainment.",
     to: "/experiences/boma-dinner-show",
-    image: destinations[0]?.imageUrl,
+    image: getOfferImage("Boma Dinner Show"),
     span: "col-span-1 lg:col-span-1",
   },
 ];

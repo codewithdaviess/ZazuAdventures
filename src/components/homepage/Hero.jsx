@@ -2,17 +2,17 @@ import React, { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { hero } from "../../data/content";
-import backgroundImg from "../../assets/background.png";
-import backgroundImg2 from "../../assets/background2.png";
-import backgroundImg3 from "../../assets/background3.png";
+import victoriaFalls from "../../assets/victoriafalls.jpg";
+import boatCruise from "../../assets/BoatCruise.jpg";
+import helicopter from "../../assets/Helicopter.jpg";
 
 function Hero() {
   const backgrounds = useMemo(
-    () => [backgroundImg, backgroundImg2, backgroundImg3].filter(Boolean),
+    () => [victoriaFalls, boatCruise, helicopter].filter(Boolean),
     []
   );
   const [activeBgIndex, setActiveBgIndex] = useState(0);
-  const bgUrl = backgrounds[activeBgIndex] ?? backgroundImg;
+  const bgUrl = backgrounds[activeBgIndex] ?? victoriaFalls;
 
   const showPrevBackground = () => {
     setActiveBgIndex((current) =>
@@ -56,7 +56,7 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.8, ease: "easeInOut" }}
+          transition={{ duration: 0.45, ease: "easeInOut" }}
           style={{
             backgroundImage: bgUrl ? `url(${bgUrl})` : "none",
             backgroundSize: "cover",
