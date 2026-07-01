@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Clock3 } from "lucide-react";
-import RatingDots from "../shared/RatingDots";
+import { getTripLabel } from "../../lib/tripLabel";
 
 function ProductCard({ product }) {
   const price =
     product?.priceFrom ?? product?.price ?? product?.price_from ?? null;
-  const description = product?.shortDescription || product?.description;
+  const tripLabel = getTripLabel(product);
   const showDuration = Boolean(product?.duration);
 
   return (
     <Link
-      to={`/products/${product.slug}`}
+      to={`/tours/${product.slug}`}
       className="relative z-10 bg-white rounded-sm flex flex-col group shadow-sm hover:shadow-md transition-all duration-300 overflow-visible"
     >
       <div className="absolute top-6 -left-2 z-20 bg-[#223441] px-4 py-2 shadow-lg rounded-t-sm rounded-br-sm">
@@ -38,21 +38,12 @@ function ProductCard({ product }) {
       <div className="px-4 py-4 flex flex-col flex-1">
         <h3 className="text-md font-bold text-dark mb-2">{product.title}</h3>
 
-        {typeof product.rating === "number" ? (
-          <div className="flex items-center gap-2 mb-3">
-            <RatingDots rating={product.rating} />
-            {product.reviews != null ? (
-              <span className="text-xs font-semibold text-gray-500">
-                {product.reviews}
-              </span>
-            ) : null}
+        {tripLabel ? (
+          <div className="mb-6">
+            <span className="inline-flex rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-700">
+              {tripLabel}
+            </span>
           </div>
-        ) : null}
-
-        {description ? (
-          <p className="text-gray-600 text-sm leading-relaxed mb-6">
-            {description}
-          </p>
         ) : null}
 
         {showDuration ? (

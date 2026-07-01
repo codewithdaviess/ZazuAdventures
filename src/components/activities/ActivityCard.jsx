@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Clock3 } from "lucide-react";
+import { getTripLabel } from "../../lib/tripLabel";
 
 function ActivityCard({ activity }) {
   const price = activity?.priceFrom ?? activity?.price ?? null;
-  const description = activity?.description || activity?.shortDescription;
+  const tripLabel = getTripLabel(activity);
   const showDuration = Boolean(activity?.duration);
 
   return (
     <Link
-      to={`/products/${activity.slug}`}
+      to={`/tours/${activity.slug}`}
       className="relative z-10 bg-white rounded-sm flex flex-col group shadow-sm hover:shadow-md transition-all duration-300 overflow-visible"
     >
       {/* Price Badge */}
@@ -38,10 +39,12 @@ function ActivityCard({ activity }) {
       <div className="px-4 py-4 flex flex-col flex-1">
         <h3 className="text-md font-bold text-dark mb-2">{activity.title}</h3>
 
-        {description && (
-          <p className="text-gray-600 text-sm leading-relaxed mb-6">
-            {description}
-          </p>
+        {tripLabel && (
+          <div className="mb-6">
+            <span className="inline-flex rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-700">
+              {tripLabel}
+            </span>
+          </div>
         )}
 
         {showDuration ? (

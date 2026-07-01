@@ -18,7 +18,7 @@ function BookingConfirmation() {
 
   const body = booking
     ? [
-        `Product: ${booking.productTitle}`,
+        `Tour: ${booking.productTitle}`,
         booking.date ? `Date: ${booking.date}` : null,
         booking.travelers ? `Travelers: ${booking.travelers}` : null,
         booking.pickup ? `Pickup: ${booking.pickup}` : null,
@@ -51,7 +51,7 @@ function BookingConfirmation() {
           <div className="mt-8 rounded-sm border border-gray-300 bg-white p-6">
             <div className="grid gap-2 text-sm text-gray-700">
               <div>
-                <span className="font-semibold text-gray-900">Product:</span>{" "}
+                <span className="font-semibold text-gray-900">Tour:</span>{" "}
                 {booking.productTitle}
               </div>
               {booking.date && (
@@ -95,7 +95,7 @@ function BookingConfirmation() {
           </a>
           {product ? (
             <Link
-              to={`/products/${product.slug}`}
+              to={`/tours/${product.slug}`}
               className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium border border-gray-300 text-gray-900 hover:bg-gray-50"
               style={{ borderRadius: "2px" }}
             >
@@ -136,4 +136,3 @@ function BookingConfirmation() {
 }
 
 export default BookingConfirmation;
-

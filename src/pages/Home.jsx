@@ -13,7 +13,6 @@ function Home() {
     <Layout withNavbarOffset={false}>
       <Hero />
       <WhatWeOffer />
-      <Activities />
       <Packages />
       <Testimonials />
     </Layout>

@@ -6,9 +6,8 @@ function Packages() {
   return (
     <ActivitiesSection
       id="packages"
-      title="Packages"
-      heading="Simple Package Combos"
-      subtitle="A clean set of ready-made Victoria Falls packages built around the most popular combinations we offer."
+      title="Popular Packages"
+      heading="All Inclusive Holiday Packages"
       items={packages}
     />
   );

@@ -5,7 +5,7 @@ function ActivitiesSection({
   id = "activities",
   title = "Available Activities",
   heading = "Experiences for Every Type of Traveller",
-  subtitle = "Discover exciting adventures, wildlife encounters, cultural experiences, and unforgettable moments during your stay in Victoria Falls.",
+  subtitle = "",
   items = [],
   sectionClassName = "py-16",
   containerClassName = "max-w-6xl mx-auto px-6",

@@ -1,10 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./lib/ScrollToTop";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Testimonials from "./pages/Testimonials";
 
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
@@ -18,16 +19,28 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {/* PRODUCTS */}
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/type/:type" element={<Products />} />
-        <Route path="/products/:slug" element={<ProductDetails />} />
+        {/* TOURS */}
+        <Route path="/tours" element={<Products />} />
+        <Route path="/tours/type/:type" element={<Products />} />
+        <Route path="/tours/:slug" element={<ProductDetails />} />
         <Route path="/book/:slug" element={<Book />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+
+        {/* Backward-compatible redirects */}
+        <Route path="/products" element={<Navigate to="/tours" replace />} />
+        <Route
+          path="/products/type/:type"
+          element={<Navigate to="/tours" replace />}
+        />
+        <Route
+          path="/products/:slug"
+          element={<Navigate to="/tours" replace />}
+        />
 
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/testimonials" element={<Testimonials />} />
       </Routes>
     </Router>
   );

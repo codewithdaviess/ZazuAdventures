@@ -579,7 +579,7 @@ export const activities = [
     description: "A thrilling guided experience to Devils Pool on Livingstone Island, available in the right seasonal window.",
     longDescription: "Devils Pool is one of the most famous seasonal experiences in the Victoria Falls region. Depending on water levels and access conditions, you can travel to Livingstone Island and, with expert guidance, swim right at the edge of the Falls.\n\nBecause availability is seasonal and weather-dependent, we always confirm the exact access window before booking. It is a premium experience and one of the most memorable things you can do at Victoria Falls.",
     imageUrl: davies,
-    gallery: [heroImage, gallery2],
+    gallery: [heroImage, gallery2, gallery3],
     companyName: "Zazu Adventures",
     highlights: [
       "Seasonal edge-of-the-Falls swim",

@@ -7,12 +7,12 @@ import { getAllProducts, getProductsByType } from "../data/content";
 const PAGE_SIZE = 10;
 
 const tabs = [
-  { label: "All", to: "/products", type: null },
-  { label: "Tours", to: "/products/type/tour", type: "tour" },
-  { label: "Transfers", to: "/products/type/transfer", type: "transfer" },
-  { label: "Packages", to: "/products/type/package", type: "package" },
-  { label: "Activities", to: "/products/type/activity", type: "activity" },
-  { label: "Accommodation", to: "/products/type/accommodation", type: "accommodation" },
+  { label: "All", to: "/tours", type: null },
+  { label: "Tours", to: "/tours/type/tour", type: "tour" },
+  { label: "Transfers", to: "/tours/type/transfer", type: "transfer" },
+  { label: "Packages", to: "/tours/type/package", type: "package" },
+  { label: "Activities", to: "/tours/type/activity", type: "activity" },
+  { label: "Accommodation", to: "/tours/type/accommodation", type: "accommodation" },
 ];
 
 function Products() {
@@ -57,7 +57,7 @@ function Products() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-3xl font-semibold">Explore</h1>
+            <h1 className="text-3xl font-semibold">Explore Tours</h1>
             <p className="mt-2 text-sm text-gray-600">
               Browse tours, transfers, packages, and more.
             </p>
@@ -76,7 +76,7 @@ function Products() {
                       : "border-gray-300 bg-white text-gray-700 hover:border-[#223441] hover:text-[#223441]",
                   ].join(" ")
                 }
-                end={tab.to === "/products"}
+                end={tab.to === "/tours"}
               >
                 {tab.label}
               </NavLink>

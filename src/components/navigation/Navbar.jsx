@@ -5,16 +5,14 @@ import zazuLogo from "../../assets/zazulogo.png";
 
 function Navbar() {
   const navLinks = [
-    { name: "What We Offer", to: "/products", type: "link" },
+    { name: "Experiences", to: "/experiences", type: "link" },
     {
-      name: "Explore",
+      name: "Tours & Packages",
       type: "dropdown",
       items: [
-        { name: "All", to: "/products" },
-        { name: "Tours", to: "/products/type/tour" },
-        { name: "Transfers", to: "/products/type/transfer" },
-        { name: "Packages", to: "/products/type/package" },
-        { name: "Accommodation (Soon)", to: "/products/type/accommodation" },
+        { name: "Multi-Day Tours", to: "/tours/multi-day" },
+        { name: "Day Tours", to: "/tours/day-tours" },
+        { name: "Packages", to: "/tours/type/package" },
       ],
     },
 
