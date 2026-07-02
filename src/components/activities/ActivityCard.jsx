@@ -15,11 +15,10 @@ function ActivityCard({ activity }) {
       className="relative z-10 bg-white rounded-sm flex flex-col group shadow-sm hover:shadow-md transition-all duration-300 overflow-visible"
     >
       {/* Price Badge */}
-      <div className="absolute top-6 -left-2 z-20 bg-[#223441] px-4 py-2 shadow-lg rounded-t-sm rounded-br-sm">
+      <div className="absolute top-6 -left-2 z-20 bg-[#223441] px-4 py-1 shadow-lg rounded-t-sm rounded-br-sm">
         {price != null ? (
           <span className="font-semibold text-lg text-white">${price}</span>
         ) : null}
-
         {/* Ribbon Tail */}
         <div className="absolute -bottom-2 left-0 w-0 h-0 border-l-[8px] border-l-transparent border-t-[8px] border-t-[#223441]" />
       </div>

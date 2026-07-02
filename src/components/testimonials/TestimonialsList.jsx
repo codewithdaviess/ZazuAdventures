@@ -93,7 +93,10 @@ function TestimonialsList({
 
   const getStackIndex = (offset) => {
     if (visibleTestimonials.length === 0) return 0;
-    return (activeIndex + offset + visibleTestimonials.length) % visibleTestimonials.length;
+    return (
+      (activeIndex + offset + visibleTestimonials.length) %
+      visibleTestimonials.length
+    );
   };
 
   const renderCard = (item, extraClassName = "") => (
@@ -112,7 +115,9 @@ function TestimonialsList({
         </div>
       </div>
 
-      <p className="text-sm leading-relaxed text-gray-600">{item.testimonial}</p>
+      <p className="text-sm leading-relaxed text-gray-600">
+        {item.testimonial}
+      </p>
     </article>
   );
 
@@ -127,7 +132,7 @@ function TestimonialsList({
     ) : null;
 
   return (
-    <section className="py-16" id="testimonials">
+    <section className="py-8" id="testimonials">
       <div className="mx-auto max-w-6xl px-6">
         {variant === "feature" ? (
           <div className="grid gap-8 lg:grid-cols-4 lg:items-start">
@@ -203,13 +208,12 @@ function TestimonialsList({
           </div>
         ) : (
           <>
-            <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <h2 className="text-2xl font-semibold text-dark">{title}</h2>
-                <p className="mt-2 max-w-2xl text-gray-600">{description}</p>
-              </div>
+            <div className="mb-12 flex flex-col items-center text-center">
+              <h2 className="text-2xl font-semibold text-dark">{title}</h2>
 
-              {button}
+              <p className="mt-2 max-w-2xl text-gray-600">{description}</p>
+
+              {button && <div className="mt-6">{button}</div>}
             </div>
 
             {loading ? (
