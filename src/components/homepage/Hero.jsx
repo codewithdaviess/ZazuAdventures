@@ -2,8 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { hero } from "../../data/content";
-import victoriaFalls from "../../assets/victoriafalls.jpg";
-import boatCruise from "../../assets/BoatCruise.jpg";
+import victoriaFalls from "../../assets/victoriafallstour.jpeg";
+import boatCruise from "../../assets/safari3.jpg";
 import helicopter from "../../assets/Helicopter.jpg";
 
 function Hero() {
