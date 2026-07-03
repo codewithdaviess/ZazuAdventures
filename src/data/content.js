@@ -13,6 +13,8 @@ import helicopter from "../assets/Helicopter.jpg";
 import safariWalk from "../assets/SafariGameWalk.jpg";
 import safari from "../assets/safari.png";
 import contour from "../assets/contourbg.png";
+import hwange from "../assets/hwange.jpeg";
+
 
 /* =========================
    HERO
@@ -532,8 +534,8 @@ export const packages = [
     price: 2500,
     priceFrom: 2500,
     priceUnit: "per person",
-    imageUrl: safari,
-    gallery: [safari, davies, boatCruise2],
+    imageUrl: hwange,
+    gallery: [hwange, davies, boatCruise2],
     destinations: ["hwange", "victoria-falls", "chobe"],
     duration: "8 Days 7 Nights",
     destination: "Hwange, Victoria Falls, Chobe and Nata",
@@ -648,7 +650,7 @@ export const packages = [
     price: 4800,
     priceFrom: 4800,
     priceUnit: "per person",
-    imageUrl: safariWalk,
+    imageUrl: hwange,
     gallery: [safariWalk, safari, boatCruise2],
     destinations: ["hwange", "victoria-falls", "chobe", "okavango-delta"],
     duration: "11 Days 10 Nights",
@@ -904,7 +906,7 @@ export const packages = [
     slug: "guided-falls-tour-lunch-sunset-cruise",
     type: "package",
     category: "Packages",
-    title: "Falls Tour + Lunch + Sunset Cruise",
+    title: "Victoria Falls Tour, Lunch and Sunset Cruise",
     ...packageInfo,
     description:
       "Guided tour of Victoria Falls with lunch at Lookout Cafe and a sunset cruise.",
@@ -914,7 +916,7 @@ export const packages = [
     price: 120,
     priceFrom: 120,
     priceUnit: "per person",
-    imageUrl: heroImage,
+    imageUrl: gallery2,
     gallery: [heroImage, gallery2, contour],
     destinations: ["victoria-falls"],
     duration: "Full day",
@@ -926,7 +928,7 @@ export const packages = [
     slug: "zim-zam-falls-and-city-tour",
     type: "package",
     category: "Packages",
-    title: "Zim/Zam Falls Tour + Livingstone City Tour + Museum",
+    title: "Zimbabwe Zambia Victoria Falls Tour, Livingstone City Tour and Museum Tour",
     ...packageInfo,
     description:
       "Guided Falls tours on both the Zimbabwe and Zambia sides with a Livingstone city tour and museum visit.",
@@ -948,7 +950,7 @@ export const packages = [
     slug: "am-safari-helicopter-boma",
     type: "package",
     category: "Packages",
-    title: "AM Safari + Helicopter Flight + Boma Dinner",
+    title: "AM Safari Drive, Helicopter Flight and Boma Dinner",
     ...packageInfo,
     description:
       "Morning safari, scenic helicopter flight, and an evening at The Boma with dinner and drum show.",
@@ -970,7 +972,7 @@ export const packages = [
     slug: "bamba-tram-falls-boma",
     type: "package",
     category: "Packages",
-    title: "AM Bamba Tram + Falls Tour + Boma",
+    title: "AM Bamba Tram, Falls Tour and Boma",
     ...packageInfo,
     description:
       "Ride the Bamba Tram, enjoy a guided tour of the Falls, and finish with The Boma experience.",
@@ -992,7 +994,7 @@ export const packages = [
     slug: "lion-elephant-walk-heli-sunset-cruise",
     type: "package",
     category: "Packages",
-    title: "Lion/Elephant Walk + Helicopter Flight + Sunset Cruise",
+    title: "Lion/Elephant Walk, Helicopter Flight and Sunset Cruise",
     ...packageInfo,
     description:
       "A wildlife walk experience paired with a helicopter flight and a sunset cruise.",
@@ -1014,7 +1016,7 @@ export const packages = [
     slug: "early-morning-falls-heli-boma",
     type: "package",
     category: "Packages",
-    title: "Early Morning Falls Tour + Heli + Boma Dinner",
+    title: "Early Morning Victoria Falls Tour, Heli and Boma Dinner",
     ...packageInfo,
     description:
       "An early guided tour of the Falls, a helicopter flight, and dinner with drum show at The Boma.",
@@ -1036,7 +1038,7 @@ export const packages = [
     slug: "am-safari-lion-cheetah-dinner-cruise",
     type: "package",
     category: "Packages",
-    title: "AM Safari + Lion/Cheetah Walk + Dinner Cruise",
+    title: "AM Safari, Lion/Cheetah Walk and Dinner Cruise",
     ...packageInfo,
     description:
       "Morning safari, lion or cheetah walk, and an evening dinner cruise on the Zambezi.",

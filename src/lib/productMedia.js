@@ -9,6 +9,9 @@ import helicopter4 from "../assets/Helicopter4.jpg";
 import safariWalk from "../assets/SafariGameWalk.jpg";
 import safari from "../assets/safari.png";
 import boma from "../assets/boma.jpg";
+import hwange from "../assets/hwange.jpeg";
+import okavango from "../assets/okavango.jpg";
+import capetown from "../assets/capetown.png";
 
 const mediaBySlug = {
   "victoria-falls-guided-tour": {
@@ -80,16 +83,16 @@ const mediaBySlug = {
     gallery: [victoriaFalls, boatCruise],
   },
   "hwange-victoria-falls-chobe-nata-8-days-7-nights": {
-    cover: safari,
-    gallery: [safariWalk, victoriaFalls, boatCruise2],
+    cover: hwange,
+    gallery: [hwange, victoriaFalls, boatCruise2],
   },
   "hwange-victoria-falls-chobe-okavango-delta-11-days-10-nights": {
-    cover: safariWalk,
-    gallery: [safariWalk, safari, boatCruise2],
+    cover: okavango,
+    gallery: [okavango, hwange, boatCruise2],
   },
   "cape-town-kruger-vic-falls-chobe-11-days-10-nights": {
-    cover: helicopter,
-    gallery: [helicopter, safari, victoriaFalls],
+    cover: capetown,
+    gallery: [capetown, safari, victoriaFalls],
   },
   "zim-zam-falls-and-city-tour": {
     cover: victoriaFalls,
@@ -150,7 +153,8 @@ export function getProductCoverImage(product) {
 export function getProductGallery(product) {
   const slug = getSlug(product);
   const title = getTitle(product);
-  const gallery = mediaBySlug[slug]?.gallery ?? mediaBySlug[title]?.gallery ?? [];
+  const gallery =
+    mediaBySlug[slug]?.gallery ?? mediaBySlug[title]?.gallery ?? [];
 
   return gallery.length ? gallery : [getProductCoverImage(product)];
 }
