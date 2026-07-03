@@ -9,7 +9,7 @@ function BookingConfirmation() {
   const booking = location.state?.booking || loadLastBooking();
   const product = useMemo(
     () => (booking?.productSlug ? getProductBySlug(booking.productSlug) : null),
-    [booking?.productSlug]
+    [booking?.productSlug],
   );
 
   const subject = booking?.productTitle
@@ -18,7 +18,7 @@ function BookingConfirmation() {
 
   const body = booking
     ? [
-        `Tour: ${booking.productTitle}`,
+        `Experience: ${booking.productTitle}`,
         booking.date ? `Date: ${booking.date}` : null,
         booking.travelers ? `Travelers: ${booking.travelers}` : null,
         booking.pickup ? `Pickup: ${booking.pickup}` : null,
@@ -32,11 +32,11 @@ function BookingConfirmation() {
     : "";
 
   const mailto = `mailto:${company.contact.email}?subject=${encodeURIComponent(
-    subject
+    subject,
   )}&body=${encodeURIComponent(body)}`;
 
   const whatsapp = `${company.contact.whatsappLink}?text=${encodeURIComponent(
-    body || subject
+    body || subject,
   )}`;
 
   return (
@@ -44,22 +44,24 @@ function BookingConfirmation() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <h1 className="text-3xl font-semibold">Request received</h1>
         <p className="mt-3 text-sm text-gray-600">
-          We’ll confirm availability and reply with the next steps.
+          We'll confirm availability and reply with the next steps.
         </p>
 
-        {booking && (
+        {booking ? (
           <div className="mt-8 rounded-sm border border-gray-300 bg-white p-6">
             <div className="grid gap-2 text-sm text-gray-700">
               <div>
-                <span className="font-semibold text-gray-900">Tour:</span>{" "}
+                <span className="font-semibold text-gray-900">
+                  Experience:
+                </span>{" "}
                 {booking.productTitle}
               </div>
-              {booking.date && (
+              {booking.date ? (
                 <div>
                   <span className="font-semibold text-gray-900">Date:</span>{" "}
                   {booking.date}
                 </div>
-              )}
+              ) : null}
               {booking.travelers ? (
                 <div>
                   <span className="font-semibold text-gray-900">
@@ -70,7 +72,7 @@ function BookingConfirmation() {
               ) : null}
             </div>
           </div>
-        )}
+        ) : null}
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
@@ -95,7 +97,7 @@ function BookingConfirmation() {
           </a>
           {product ? (
             <Link
-              to={`/tours/${product.slug}`}
+              to={`/experiences/${product.slug}`}
               className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium border border-gray-300 text-gray-900 hover:bg-gray-50"
               style={{ borderRadius: "2px" }}
             >

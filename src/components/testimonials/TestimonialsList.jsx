@@ -208,7 +208,7 @@ function TestimonialsList({
           </div>
         ) : (
           <>
-            <div className="mb-12 flex flex-col items-center text-center">
+            <div className="mb-12 flex flex-row items-center text-center">
               <h2 className="text-2xl font-semibold text-dark">{title}</h2>
 
               <p className="mt-2 max-w-2xl text-gray-600">{description}</p>

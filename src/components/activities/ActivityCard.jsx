@@ -11,7 +11,7 @@ function ActivityCard({ activity }) {
 
   return (
     <Link
-      to={`/tours/${activity.slug}`}
+      to={`/experiences/${activity.slug}`}
       className="relative z-10 bg-white rounded-sm flex flex-col group shadow-sm hover:shadow-md transition-all duration-300 overflow-visible"
     >
       {/* Price Badge */}

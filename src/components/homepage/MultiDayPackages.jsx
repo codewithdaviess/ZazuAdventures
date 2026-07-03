@@ -3,10 +3,10 @@ import { packages } from "../../data/content";
 import ActivitiesSection from "../activities/ActivitiesSection";
 
 const multiDayPackageSlugs = [
-  "victoria-falls-3-day-classic",
-  "zim-zam-falls-and-city-tour",
-  "am-safari-lion-cheetah-dinner-cruise",
-  "guided-falls-tour-lunch-sunset-cruise",
+  "victoria-falls-chobe-5-days-4-nights",
+  "hwange-victoria-falls-chobe-nata-8-days-7-nights",
+  "hwange-victoria-falls-chobe-okavango-delta-11-days-10-nights",
+  "cape-town-kruger-vic-falls-chobe-11-days-10-nights",
 ];
 
 function MultiDayPackages() {
@@ -17,7 +17,7 @@ function MultiDayPackages() {
   return (
     <ActivitiesSection
       id="multiday-packages"
-      title="Multiday Packages"
+      title="MULTIDAY PACKAGES"
       heading="More Ways to Explore"
       items={multiDayPackages}
     />

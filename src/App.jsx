@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Testimonials from "./pages/Testimonials";
+import Experiences from "./pages/Experiences";
 
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
@@ -19,6 +20,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
+        {/* EXPERIENCES */}
+        <Route path="/experiences" element={<Experiences />} />
+        <Route path="/experiences/:slug" element={<ProductDetails />} />
+
         {/* TOURS */}
         <Route path="/tours" element={<Products />} />
         <Route path="/tours/type/:type" element={<Products />} />
@@ -27,15 +32,13 @@ function App() {
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
 
         {/* Backward-compatible redirects */}
-        <Route path="/products" element={<Navigate to="/tours" replace />} />
-        <Route
-          path="/products/type/:type"
-          element={<Navigate to="/tours" replace />}
-        />
-        <Route
-          path="/products/:slug"
-          element={<Navigate to="/tours" replace />}
-        />
+        <Route path="/experience" element={<Navigate to="/experiences" replace />} />
+        <Route path="/experience/:slug" element={<ProductDetails />} />
+        <Route path="/products" element={<Navigate to="/experiences" replace />} />
+        <Route path="/products/type/:type" element={<Navigate to="/experiences" replace />} />
+        <Route path="/products/:slug" element={<ProductDetails />} />
+        <Route path="/tours/multi-day" element={<Navigate to="/experiences" replace />} />
+        <Route path="/tours/day-tours" element={<Navigate to="/experiences" replace />} />
 
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />

@@ -8,7 +8,7 @@ function Testimonials() {
       showViewMore
       viewMoreTo="/testimonials"
       viewMoreLabel="View more"
-      variant="stack"
+      variant="feature"
     />
   );
 }

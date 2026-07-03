@@ -55,9 +55,41 @@ const mediaBySlug = {
     cover: placeholder,
     gallery: [placeholder],
   },
+  "victoria-falls": {
+    cover: victoriaFalls,
+    gallery: [victoriaFalls, boatCruise],
+  },
+  "flight-of-the-angels": {
+    cover: helicopter,
+    gallery: [helicopter, helicopter2, helicopter3],
+  },
+  "zambezi-river-cruise": {
+    cover: boatCruise,
+    gallery: [boatCruise, boatCruise2],
+  },
+  "boma-dinner-show": {
+    cover: boma,
+    gallery: [boma],
+  },
   "guided-falls-tour-lunch-sunset-cruise": {
     cover: victoriaFalls,
     gallery: [victoriaFalls, boatCruise],
+  },
+  "victoria-falls-chobe-5-days-4-nights": {
+    cover: victoriaFalls,
+    gallery: [victoriaFalls, boatCruise],
+  },
+  "hwange-victoria-falls-chobe-nata-8-days-7-nights": {
+    cover: safari,
+    gallery: [safariWalk, victoriaFalls, boatCruise2],
+  },
+  "hwange-victoria-falls-chobe-okavango-delta-11-days-10-nights": {
+    cover: safariWalk,
+    gallery: [safariWalk, safari, boatCruise2],
+  },
+  "cape-town-kruger-vic-falls-chobe-11-days-10-nights": {
+    cover: helicopter,
+    gallery: [helicopter, safari, victoriaFalls],
   },
   "zim-zam-falls-and-city-tour": {
     cover: victoriaFalls,

@@ -12,7 +12,7 @@ function ProductCard({ product }) {
 
   return (
     <Link
-      to={`/tours/${product.slug}`}
+      to={`/experiences/${product.slug}`}
       className="relative z-10 bg-white rounded-sm flex flex-col group shadow-sm hover:shadow-md transition-all duration-300 overflow-visible"
     >
       <div className="absolute top-6 -left-2 z-20 bg-[#223441] px-4 py-2 shadow-lg rounded-t-sm rounded-br-sm">

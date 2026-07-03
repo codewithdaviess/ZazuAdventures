@@ -3,8 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Layout from "../components/layout/Layout";
 import { getProductBySlug } from "../data/content";
-import ExpandableText from "../components/shared/ExpandableText";
-import { Clock3, Info, Layers, MapPin } from "lucide-react";
+import { Info, MapPin } from "lucide-react";
 import { getProductGallery } from "../lib/productMedia";
 
 function List({ title, items, icon: Icon }) {
@@ -24,6 +23,51 @@ function List({ title, items, icon: Icon }) {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function Itinerary({ days }) {
+  if (!days?.length) return null;
+
+  return (
+    <div className="mt-10">
+      <h2 className="text-md font-semibold">Itinerary</h2>
+      <div className="mt-4 space-y-4">
+        {days.map((day) => (
+          <div
+            key={day.day}
+            className="rounded-sm border border-gray-300 bg-white p-5"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#223441]">
+              Day {day.day}
+            </p>
+            <h3 className="mt-2 text-base font-semibold text-gray-900">
+              {day.title}
+            </h3>
+            {day.details ? (
+              <p className="mt-3 text-sm leading-7 text-gray-700">
+                {day.details}
+              </p>
+            ) : null}
+            {day.bullets?.length ? (
+              <ul className="mt-4 space-y-2 text-sm text-gray-700">
+                {day.bullets.map((bullet) => (
+                  <li key={bullet} className="flex gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#223441]" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {day.overnight ? (
+              <p className="mt-4 text-sm font-medium text-gray-900">
+                Overnight in {day.overnight}
+              </p>
+            ) : null}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -76,7 +120,7 @@ function ProductDetails() {
     return (
       <Layout>
         <div className="mx-auto max-w-6xl px-6 py-12">
-          <h1 className="text-3xl font-semibold">Tour not found</h1>
+          <h1 className="text-3xl font-semibold">Experience not found</h1>
           <p className="mt-3 text-sm text-gray-600">
             The item you're looking for doesn't exist (or the link is wrong).
           </p>
@@ -125,10 +169,10 @@ function ProductDetails() {
               </h1>
               {/* CTA */}
               <Link
-                to="/book"
+                to={`/book/${product.slug}`}
                 className="mt-5 inline-flex items-center rounded-full bg-primary px-6 py-3 border-1 text-sm font-semibold text-white transition hover:bg-primary/90"
               >
-                Book This Tour
+                Book This Experience
               </Link>
             </div>
           </div>
@@ -150,24 +194,16 @@ function ProductDetails() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-4xl px-6 py-10 text-center">
+        <div id="tour-content" className="mx-auto max-w-4xl px-6 py-6 text-center">
           <div className="mx-auto max-w-3xl">
-            <ExpandableText
-              text={product.longDescription}
-              lines={4}
-              className="mt-6 text-sm text-gray-900 leading-loose text-left"
-              moreLabel="Show more details"
-              lessLabel="Show less"
-            />
-            <div className="mt-8 grid gap-3 text-sm text-gray-700 sm:grid-cols-2 text-left">
-              {product.route ? (
-                <div className="rounded-sm border border-gray-300 bg-white p-4">
-                  <span className="font-semibold text-gray-900">Route:</span>{" "}
-                  {product.route}
-                </div>
-              ) : null}
+            {product.shortDescription || product.description ? (
+              <p className="mt-6 text-sm leading-loose text-gray-700 text-left">
+                {product.shortDescription || product.description}
+              </p>
+            ) : null}
+            <div className="mt-4 grid gap-3 text-sm text-gray-700 sm:grid-cols-2 text-left">
               {product.pickup ? (
-                <div className="sm:col-span-2 rounded-sm border border-gray-300 bg-white p-4 flex items-center gap-2">
+                <div className="sm:col-span-2 rounded-sm bg-white p-4 flex items-center gap-2">
                   <MapPin size={16} className="text-[#223441]" />
                   <span className="font-semibold text-gray-900">
                     Pickup:
@@ -178,6 +214,7 @@ function ProductDetails() {
             </div>
 
             <div className="text-left">
+              <Itinerary days={product.itineraryDays} />
               <List title="Highlights" items={product.highlights} />
               <List title="Start Times" items={product.startTimes} />
               <List title="Includes" items={product.includes} />
@@ -187,7 +224,7 @@ function ProductDetails() {
               <List title="Cancellation" items={product.cancellation} />
 
               {product.whatToKnow?.length ? (
-                <div className="mt-10 rounded-sm border border-gray-300 bg-white p-6 text-left">
+                <div className="mt-10 rounded-sm bg-white p-6 text-left">
                   <div className="flex items-center gap-2">
                     <Info size={18} className="text-[#223441]" />
                     <h2 className="text-md font-semibold">What to know</h2>
