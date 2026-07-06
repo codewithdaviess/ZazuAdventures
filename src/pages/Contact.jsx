@@ -17,7 +17,7 @@ function Contact() {
       .join("\n");
 
     return `mailto:${company.contact.email}?subject=${encodeURIComponent(
-      subject
+      subject,
     )}&body=${encodeURIComponent(body)}`;
   }, [form.email, form.message, form.name]);
 
@@ -31,7 +31,7 @@ function Contact() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <h1 className="text-3xl font-semibold">Contact Us</h1>
         <p className="mt-3 text-sm text-gray-600">
-          Tell us what you’re planning and we’ll recommend the best options.
+          Tell us what you're planning and we'll recommend the best options.
         </p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.8fr]">

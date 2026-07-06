@@ -100,7 +100,7 @@ function Products() {
                   disabled={safePage <= 1}
                   className="inline-flex items-center justify-center rounded-sm border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 transition disabled:opacity-50 hover:border-[#223441] hover:text-[#223441]"
                 >
-                  ← Prev
+                  Prev
                 </button>
 
                 <div className="text-sm text-gray-600">
@@ -113,7 +113,7 @@ function Products() {
                   disabled={safePage >= totalPages}
                   className="inline-flex items-center justify-center rounded-sm border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 transition disabled:opacity-50 hover:border-[#223441] hover:text-[#223441]"
                 >
-                  Next →
+                  Next
                 </button>
               </div>
             </>

@@ -90,9 +90,7 @@ function Footer() {
     <footer className="bg-[#f1f3f5] text-[#161b1d]">
       <div className="mx-auto max-w-6xl px-6 py-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-[#4f5658]">
-            © 2026 codewithdavies.
-          </p>
+          <p className="text-sm text-[#4f5658]">© 2026 codewithdavies.</p>
 
           <div className="flex flex-wrap items-center gap-3">
             {socialLinks.map((socialLink) => (

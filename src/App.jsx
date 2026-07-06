@@ -34,11 +34,11 @@ function App() {
         {/* Backward-compatible redirects */}
         <Route path="/experience" element={<Navigate to="/experiences" replace />} />
         <Route path="/experience/:slug" element={<ProductDetails />} />
-        <Route path="/products" element={<Navigate to="/experiences" replace />} />
-        <Route path="/products/type/:type" element={<Navigate to="/experiences" replace />} />
+        <Route path="/products" element={<Navigate to="/tours" replace />} />
+        <Route path="/products/type/:type" element={<Products />} />
         <Route path="/products/:slug" element={<ProductDetails />} />
-        <Route path="/tours/multi-day" element={<Navigate to="/experiences" replace />} />
-        <Route path="/tours/day-tours" element={<Navigate to="/experiences" replace />} />
+        <Route path="/tours/multi-day" element={<Navigate to="/tours/type/package" replace />} />
+        <Route path="/tours/day-tours" element={<Navigate to="/tours/type/tour" replace />} />
 
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
