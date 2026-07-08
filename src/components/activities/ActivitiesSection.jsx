@@ -17,7 +17,7 @@ function ActivitiesSection({
       <div className={containerClassName}>
         {/* Header */}
         <div className="mb-10 max-w-2xl mx-auto text-center">
-          <span className="text-sm font-medium uppercase tracking-wider text-primary">
+          <span className="text-sm font-semibold text-[#8A6A3D] uppercase tracking-wider text-primary">
             {title}
           </span>
 

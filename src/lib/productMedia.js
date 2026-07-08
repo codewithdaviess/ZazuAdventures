@@ -12,6 +12,10 @@ import boma from "../assets/boma.jpg";
 import hwange from "../assets/hwange.jpeg";
 import okavango from "../assets/okavango.jpg";
 import capetown from "../assets/capetown.png";
+import bambatram from "../assets/bambatram2.jpeg"
+import chobe from "../assets/chobe.jpeg"
+import victoriaFallsBoatCruise from "../assets/BoatCruise3.jpg"
+import victoriaFallshelicopter from "../assets/Helicopter4.jpg"
 
 const mediaBySlug = {
   "victoria-falls-guided-tour": {
@@ -75,7 +79,7 @@ const mediaBySlug = {
     gallery: [boma],
   },
   "guided-falls-tour-lunch-sunset-cruise": {
-    cover: victoriaFalls,
+    cover: victoriaFallsBoatCruise,
     gallery: [victoriaFalls, boatCruise],
   },
   "victoria-falls-chobe-5-days-4-nights": {
@@ -91,7 +95,7 @@ const mediaBySlug = {
     gallery: [okavango, hwange, boatCruise2],
   },
   "cape-town-kruger-vic-falls-chobe-11-days-10-nights": {
-    cover: capetown,
+    cover: chobe,
     gallery: [capetown, safari, victoriaFalls],
   },
   "zim-zam-falls-and-city-tour": {
@@ -103,7 +107,7 @@ const mediaBySlug = {
     gallery: [safariWalk, helicopter, boma],
   },
   "bamba-tram-falls-boma": {
-    cover: victoriaFalls,
+    cover: bambatram,
     gallery: [victoriaFalls, boma],
   },
   "lion-elephant-walk-heli-sunset-cruise": {
@@ -111,7 +115,7 @@ const mediaBySlug = {
     gallery: [safariWalk, helicopter, boatCruise],
   },
   "early-morning-falls-heli-boma": {
-    cover: victoriaFalls,
+    cover: victoriaFallshelicopter,
     gallery: [victoriaFalls, helicopter, boma],
   },
   "am-safari-lion-cheetah-dinner-cruise": {

@@ -55,11 +55,11 @@ function WhatWeOffer() {
 
       <div className="relative mx-auto max-w-6xl px-4">
         <div className="mb-10 max-w-2xl mx-auto text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#8A6A3D]">
+          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8A6A3D]">
             Top Selling
           </span>
 
-          <h2 className="mt-3 text-2xl font-semibold text-dark lg:text-3xl">
+          <h2 className="mt-3 text-2xl font-semibold text-dark lg:text-2xl">
             Loved by travellers across the region
           </h2>
         </div>
@@ -69,7 +69,7 @@ function WhatWeOffer() {
             <Link
               key={item.title}
               to={item.to}
-              className="group relative overflow-hidden rounded-3xl shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-sm shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
               <img
                 src={item.image}

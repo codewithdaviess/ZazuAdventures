@@ -194,8 +194,8 @@ function ProductDetails() {
           </div>
         </div>
 
-        <div id="tour-content" className="mx-auto max-w-4xl px-6 py-6 text-center">
-          <div className="mx-auto max-w-3xl">
+        <div id="tour-content" className="mx-auto max-w-6xl text-center">
+          <div className="mx-auto px-6 py-6 max-w-6xl">
             {product.shortDescription || product.description ? (
               <p className="mt-6 text-sm leading-loose text-gray-700 text-left">
                 {product.shortDescription || product.description}

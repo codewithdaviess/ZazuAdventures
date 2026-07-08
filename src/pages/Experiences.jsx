@@ -8,7 +8,7 @@ function Experiences() {
     <Layout>
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="max-w-2xl">
-          <span className="text-sm font-medium uppercase tracking-wider text-primary">
+          <span className="text-sm  text-[#8A6A3D] font-medium uppercase tracking-wider text-primary">
             Experiences
           </span>
           <h1 className="mt-2 text-3xl font-semibold text-dark">
